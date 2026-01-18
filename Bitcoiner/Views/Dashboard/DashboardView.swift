@@ -41,6 +41,13 @@ struct DashboardView: View {
                             viewModel.refreshHistoricalPrices()
                         }
                         
+                        // Asset Comparison - BTC vs Gold vs Real Estate
+                        AssetComparisonView(
+                            currentBtcPrice: viewModel.bitcoinPrice.price,
+                            historicalBtcPrices: viewModel.historicalPrices,
+                            marketData: viewModel.marketData
+                        )
+                        
                         // Bitcoin Quote
                         QuoteCardView(quote: currentQuote, showRefreshButton: true) {
                             withAnimation(.easeInOut(duration: 0.3)) {

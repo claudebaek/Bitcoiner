@@ -14,6 +14,7 @@ final class DashboardViewModel: ObservableObject {
     @Published var bitcoinPrice: BitcoinPrice = .placeholder
     @Published var fearGreedIndex: FearGreedIndex = .placeholder
     @Published var historicalPrices: HistoricalPriceCollection = .placeholder
+    @Published var marketData: MarketDataCollection = .placeholder
     @Published var isLoading = false
     @Published var error: String?
     @Published var lastRefresh: Date?
@@ -21,14 +22,17 @@ final class DashboardViewModel: ObservableObject {
     // MARK: - Private Properties
     private let coinGeckoService: CoinGeckoService
     private let fearGreedService: FearGreedService
+    private let marketDataService: MarketDataService
     private var refreshTask: Task<Void, Never>?
     private var autoRefreshTask: Task<Void, Never>?
     
     // MARK: - Initialization
     init(coinGeckoService: CoinGeckoService = .shared,
-         fearGreedService: FearGreedService = .shared) {
+         fearGreedService: FearGreedService = .shared,
+         marketDataService: MarketDataService = .shared) {
         self.coinGeckoService = coinGeckoService
         self.fearGreedService = fearGreedService
+        self.marketDataService = marketDataService
     }
     
     // MARK: - Public Methods
@@ -69,6 +73,7 @@ final class DashboardViewModel: ObservableObject {
         await withTaskGroup(of: Void.self) { group in
             group.addTask { await self.fetchBitcoinPrice() }
             group.addTask { await self.fetchFearGreedIndex() }
+            group.addTask { await self.fetchMarketData() }
         }
         
         // Fetch historical prices after we have current price
@@ -103,9 +108,20 @@ final class DashboardViewModel: ObservableObject {
         historicalPrices = await coinGeckoService.fetchAllHistoricalPrices(currentPrice: currentPrice)
     }
     
+    private func fetchMarketData() async {
+        marketData.isLoading = true
+        marketData = await marketDataService.fetchAllMarketData()
+    }
+    
     func refreshHistoricalPrices() {
         Task {
             await fetchHistoricalPrices()
+        }
+    }
+    
+    func refreshMarketData() {
+        Task {
+            await fetchMarketData()
         }
     }
 }
