@@ -30,6 +30,12 @@ struct MainTabView: View {
                 }
                 .tag(Tab.positions)
             
+            LearnView()
+                .tabItem {
+                    Label(Tab.learn.title, systemImage: Tab.learn.icon)
+                }
+                .tag(Tab.learn)
+            
             SettingsView()
                 .tabItem {
                     Label(Tab.settings.title, systemImage: Tab.settings.icon)
@@ -69,6 +75,7 @@ enum Tab: String, CaseIterable {
     case dashboard
     case market
     case positions
+    case learn
     case settings
     
     var title: String {
@@ -76,6 +83,7 @@ enum Tab: String, CaseIterable {
         case .dashboard: return "Dashboard"
         case .market: return "Market"
         case .positions: return "Positions"
+        case .learn: return "Learn"
         case .settings: return "Settings"
         }
     }
@@ -85,6 +93,7 @@ enum Tab: String, CaseIterable {
         case .dashboard: return "bitcoinsign.circle.fill"
         case .market: return "chart.bar.fill"
         case .positions: return "arrow.left.arrow.right"
+        case .learn: return "book.fill"
         case .settings: return "gearshape.fill"
         }
     }
