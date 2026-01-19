@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SelfCustodyGuideView: View {
-    @State private var expandedSection: UUID?
+    @ObservedObject private var localizationManager = LocalizationManager.shared
+    @State private var expandedSection: String?
     
     var body: some View {
         ScrollView {
@@ -17,7 +18,7 @@ struct SelfCustodyGuideView: View {
                 introSection
                 
                 // Guide Sections
-                ForEach(GuideSection.allSections) { section in
+                ForEach(GuideSection.localizedSections) { section in
                     GuideSectionCard(
                         section: section,
                         isExpanded: expandedSection == section.id,
@@ -39,7 +40,7 @@ struct SelfCustodyGuideView: View {
             .padding()
         }
         .background(AppColors.primaryBackground)
-        .navigationTitle("Self-Custody Guide")
+        .navigationTitle(L10n.selfCustodyNavTitle)
         .navigationBarTitleDisplayMode(.inline)
     }
     
@@ -49,11 +50,11 @@ struct SelfCustodyGuideView: View {
                 .font(.system(size: 40))
                 .foregroundColor(AppColors.bitcoinOrange)
             
-            Text("Take Control of Your Bitcoin")
+            Text(L10n.takeControl)
                 .font(.system(size: 20, weight: .bold))
                 .foregroundColor(AppColors.primaryText)
             
-            Text("Self-custody is the foundation of Bitcoin sovereignty. Learn the essential concepts to secure your wealth.")
+            Text(L10n.selfCustodyIntro)
                 .font(.system(size: 14))
                 .foregroundColor(AppColors.secondaryText)
                 .multilineTextAlignment(.center)
@@ -68,16 +69,16 @@ struct SelfCustodyGuideView: View {
             HStack {
                 Image(systemName: "exclamationmark.triangle.fill")
                     .foregroundColor(AppColors.neutralYellow)
-                Text("Remember")
+                Text(L10n.remember)
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(AppColors.primaryText)
             }
             
             VStack(alignment: .leading, spacing: 8) {
-                ReminderBullet(text: "Never share your seed phrase with anyone")
-                ReminderBullet(text: "Always verify addresses on your hardware wallet")
-                ReminderBullet(text: "Test your backup before storing large amounts")
-                ReminderBullet(text: "Keep software and firmware updated")
+                ReminderBullet(text: L10n.reminderSeedPhrase)
+                ReminderBullet(text: L10n.reminderVerifyAddress)
+                ReminderBullet(text: L10n.reminderTestBackup)
+                ReminderBullet(text: L10n.reminderKeepUpdated)
             }
         }
         .padding()
@@ -134,7 +135,7 @@ struct GuideSectionCard: View {
                     
                     // Key Points
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Key Points")
+                        Text(L10n.keyPoints)
                             .font(.system(size: 13, weight: .semibold))
                             .foregroundColor(AppColors.primaryText)
                         
