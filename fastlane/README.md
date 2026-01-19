@@ -39,6 +39,30 @@ Build only (no upload)
 
 Run tests
 
+### ios create_app
+
+```sh
+[bundle exec] fastlane ios create_app
+```
+
+Create app on App Store Connect
+
+### ios upload
+
+```sh
+[bundle exec] fastlane ios upload
+```
+
+Upload existing IPA to TestFlight
+
+### ios metadata
+
+```sh
+[bundle exec] fastlane ios metadata
+```
+
+Upload metadata and screenshots to App Store Connect
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.

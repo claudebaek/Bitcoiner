@@ -54,6 +54,9 @@ struct SettingsView: View {
                                 Button {
                                     withAnimation(.easeInOut(duration: 0.3)) {
                                         localizationManager.setLanguage(language)
+                                        // Log analytics
+                                        AnalyticsManager.shared.logLanguageChanged(to: language.rawValue)
+                                        AnalyticsManager.shared.setPreferredLanguage(language.rawValue)
                                     }
                                 } label: {
                                     HStack {
@@ -151,6 +154,9 @@ struct SettingsView: View {
             .background(AppColors.primaryBackground)
             .navigationTitle(L10n.settingsTitle)
             .navigationBarTitleDisplayMode(.large)
+            .onAppear {
+                AnalyticsManager.shared.logEvent(.settingsViewed)
+            }
         }
     }
 }

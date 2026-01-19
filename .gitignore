@@ -69,3 +69,4 @@ secrets/
 *.p12
 *.mobileprovision
 *.cer
+fastlane/AuthKey*.p8

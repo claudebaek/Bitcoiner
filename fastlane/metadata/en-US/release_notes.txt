@@ -1,0 +1,4 @@
+• Fixed expandable sections in Self-Custody Guide
+• Added localization support (Korean/English)
+• Added recommended books and YouTubers
+• UI improvements and bug fixes

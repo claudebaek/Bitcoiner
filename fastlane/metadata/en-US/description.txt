@@ -1,0 +1,28 @@
+BitcoinMax is an all-in-one app for Bitcoin investors and learners.
+
+[Real-time Price & Market Data]
+• Live Bitcoin price with 24h change
+• Fear & Greed Index
+• Mining difficulty and hashrate
+• US National Debt counter
+
+[Position Management]
+• Track your Bitcoin holdings
+• Calculate average buy price and P&L
+• Set target prices
+
+[Learn Bitcoin]
+• Complete self-custody guide
+• Bitcoin core principles
+• Recommended books
+• Recommended YouTubers
+• Hardware wallet comparison
+
+[Features]
+• Dark mode support
+• Korean/English support
+• No personal data collection
+• Clean UI/UX
+
+Bitcoin is not just an investment - it's a journey to reclaim financial sovereignty.
+Start your journey with BitcoinMax today!

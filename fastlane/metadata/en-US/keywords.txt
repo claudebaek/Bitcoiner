@@ -1,0 +1,1 @@
+bitcoin,crypto,price,portfolio,tracker,investment,learn,self-custody,satoshi,blockchain,wallet,hodl

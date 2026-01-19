@@ -47,6 +47,12 @@ struct MainTabView: View {
         .id(localizationManager.currentLanguage) // Force refresh on language change
         .onAppear {
             configureTabBarAppearance()
+            // Log initial screen view
+            AnalyticsManager.shared.logScreenView(screenName: selectedTab.rawValue.capitalized)
+        }
+        .onChange(of: selectedTab) { _, newTab in
+            // Log screen view when tab changes
+            AnalyticsManager.shared.logScreenView(screenName: newTab.rawValue.capitalized)
         }
     }
     

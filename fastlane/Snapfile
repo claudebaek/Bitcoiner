@@ -1,0 +1,32 @@
+# Snapfile for BitcoinMax
+# For more info: https://docs.fastlane.tools/actions/snapshot/
+
+# Device types for screenshots (6.7" display only - App Store requirement)
+devices([
+  "iPhone 15 Pro Max"
+])
+
+# Languages for screenshots  
+languages([
+  "ko",
+  "en-US"
+])
+
+# Output directory
+output_directory("./fastlane/screenshots")
+
+# Clear previous screenshots
+clear_previous_screenshots(true)
+
+# Project settings
+project("Bitcoiner.xcodeproj")
+scheme("Bitcoiner")
+
+# Only run screenshot tests
+only_testing(["BitcoinerUITests/ScreenshotTests"])
+
+# Stop after first failure
+stop_after_first_error(true)
+
+# Concurrent simulators
+concurrent_simulators(false)

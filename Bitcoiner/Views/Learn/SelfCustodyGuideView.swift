@@ -28,6 +28,11 @@ struct SelfCustodyGuideView: View {
                                     expandedSection = nil
                                 } else {
                                     expandedSection = section.id
+                                    // Log analytics event
+                                    AnalyticsManager.shared.logSelfCustodySectionExpanded(
+                                        sectionId: section.id,
+                                        sectionTitle: section.title
+                                    )
                                 }
                             }
                         }
@@ -42,6 +47,9 @@ struct SelfCustodyGuideView: View {
         .background(AppColors.primaryBackground)
         .navigationTitle(L10n.selfCustodyNavTitle)
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            AnalyticsManager.shared.logEvent(.selfCustodyGuideViewed)
+        }
     }
     
     private var introSection: some View {
