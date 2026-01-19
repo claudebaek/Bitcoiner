@@ -1,0 +1,448 @@
+/* 
+  Localizable.strings (Korean)
+  Bitcoiner
+
+  Created by leejay100 on 1/19/26.
+*/
+
+// MARK: - Tab Bar
+"tab_dashboard" = "대시보드";
+"tab_market" = "시장";
+"tab_positions" = "포지션";
+"tab_learn" = "학습";
+"tab_settings" = "설정";
+
+// MARK: - Dashboard
+"dashboard_title" = "비트코인";
+"loading_data" = "비트코인 데이터 로딩 중...";
+"quick_stats" = "주요 통계";
+"circulating_supply" = "유통량";
+"of_max_supply" = "최대 2,100만 BTC 중";
+"market_sentiment" = "시장 심리";
+"retry" = "재시도";
+"last_updated" = "마지막 업데이트:";
+
+// MARK: - Fear & Greed
+"fear_greed_index" = "공포 탐욕 지수";
+"extreme_fear" = "극심한 공포";
+"fear" = "공포";
+"neutral" = "중립";
+"greed" = "탐욕";
+"extreme_greed" = "극심한 탐욕";
+
+// MARK: - Market Data
+"market_title" = "시장 데이터";
+"mining_data" = "채굴 데이터";
+"exchange_reserves" = "거래소 보유량";
+"hash_rate" = "해시레이트";
+"difficulty" = "채굴 난이도";
+"block_height" = "블록 높이";
+"mining_cost" = "채굴 원가";
+
+// MARK: - Positions
+"positions_title" = "포지션";
+"long_short_ratio" = "롱/숏 비율";
+"long_positions" = "롱";
+"short_positions" = "숏";
+
+// MARK: - Learn
+"learn_title" = "학습";
+"self_custody_guide" = "셀프 커스터디 가이드";
+"self_custody_subtitle" = "나만의 키를 보유해야 하는 이유와 방법";
+"wallet_recommendations" = "지갑 추천";
+"wallet_subtitle" = "하드웨어, 소프트웨어, 멀티시그 옵션";
+"security_checklist" = "보안 체크리스트";
+"security_subtitle" = "비트코인을 보호하기 위한 필수 단계";
+"korean_market_info" = "한국 시장 정보";
+"korean_market_subtitle" = "거래소, 세금, 한국 규제";
+"bitcoin_books" = "비트코인 도서";
+"books_subtitle" = "필수 및 추천 도서 목록";
+"youtube_channels" = "유튜브 채널";
+"youtube_subtitle" = "국내외 비트코인 교육 채널";
+"bitcoin_principles" = "비트코인 원리";
+"bitcoin_principles_subtitle" = "비트코인 작동 원리 - 시각적 가이드";
+"concepts" = "개념";
+
+// MARK: - Bitcoin Principles View
+"bp_nav_title" = "비트코인 원리";
+"bp_header_title" = "비트코인 작동 원리";
+"bp_header_subtitle" = "P2P 전자 화폐 시스템";
+
+// Section Titles
+"bp_section_decentralized" = "1. 탈중앙화 네트워크";
+"bp_section_blockchain" = "2. 블록체인 구조";
+"bp_section_mining" = "3. 채굴 & 작업증명";
+"bp_section_supply" = "4. 한정 공급량: 2,100만개";
+"bp_section_p2p" = "5. P2P 거래";
+
+// Decentralized Network
+"bp_decentralized_desc" = "중앙 기관이 없습니다. 전 세계 수천 대의 컴퓨터(노드)가 독립적으로 비트코인 블록체인을 검증하고 저장합니다.";
+
+// Blockchain
+"bp_prev_hash" = "이전 해시";
+"bp_block" = "블록";
+"bp_blockchain_desc" = "각 블록은 이전 블록의 암호화 해시를 포함하여 끊을 수 없는 체인을 형성합니다. 어떤 블록을 변조하려면 이후의 모든 블록을 다시 계산해야 합니다.";
+
+// Mining
+"bp_miners" = "채굴자";
+"bp_solve_puzzle" = "퍼즐\n풀기";
+"bp_new_block" = "새 블록";
+"bp_earn" = "획득";
+"bp_reward" = "보상";
+"bp_block_time" = "블록 시간";
+"bp_difficulty" = "난이도";
+"bp_halving" = "반감기";
+"bp_block_time_value" = "~10분";
+"bp_difficulty_value" = "자동 조정";
+"bp_halving_value" = "4년마다";
+"bp_mining_desc" = "채굴자들은 복잡한 수학 퍼즐을 풀기 위해 경쟁합니다. 승자는 새 블록을 추가하고 비트코인 보상을 받습니다. 난이도는 ~10분 블록 시간을 유지하기 위해 2,016 블록마다 조정됩니다.";
+
+// Supply
+"bp_mined" = "1,960만개 채굴됨";
+"bp_left" = "140만개 남음";
+"bp_max_supply" = "21,000,000 BTC (최대 공급량)";
+"bp_halving_schedule" = "비트코인 반감기 일정";
+"bp_supply_desc" = "무한히 발행할 수 있는 법정화폐와 달리 비트코인은 2,100만개로 제한됩니다. 블록 보상은 210,000 블록(~4년)마다 반으로 줄어들어 시간이 지남에 따라 비트코인은 점점 희소해집니다.";
+
+// P2P Transactions
+"bp_sender" = "앨리스";
+"bp_receiver" = "밥";
+"bp_signed_verified" = "서명 & 검증됨";
+"bp_private_key" = "개인키";
+"bp_public_key" = "공개키";
+"bp_secret_never_share" = "비밀, 절대 공유 금지";
+"bp_your_address" = "당신의 주소";
+"bp_p2p_desc" = "거래는 개인키로 서명되어 네트워크에 전파됩니다. 은행이나 중개자가 필요 없습니다. 누구나 공개 블록체인을 사용하여 거래를 검증할 수 있습니다.";
+
+// Key Properties
+"bp_key_properties" = "핵심 특성";
+"bp_secure" = "안전함";
+"bp_secure_desc" = "암호학적으로 보호됨";
+"bp_borderless" = "국경 없음";
+"bp_borderless_desc" = "언제 어디서나 전송";
+"bp_pseudonymous" = "익명성";
+"bp_pseudonymous_desc" = "개인정보 불필요";
+"bp_irreversible" = "되돌릴 수 없음";
+"bp_irreversible_desc" = "지불 거부 없음";
+"bp_verifiable" = "검증 가능";
+"bp_verifiable_desc" = "누구나 감사 가능";
+"bp_immutable" = "불변성";
+"bp_immutable_desc" = "변경 불가능";
+
+// Quote
+"bp_quote" = "\"순수하게 P2P 버전의 전자 화폐는 금융 기관을 거치지 않고 한 당사자에서 다른 당사자에게 직접 온라인 결제를 보낼 수 있게 해줍니다.\"";
+"bp_quote_author" = "— 사토시 나카모토, 비트코인 백서 (2008)";
+"topics" = "주제";
+"wallets" = "지갑";
+"items" = "항목";
+"books" = "권";
+"channels" = "채널";
+"education" = "교육";
+"self_custody_header" = "비트코인 셀프 커스터디";
+"not_your_keys" = "니 키가 아니면 니 코인이 아니다";
+
+// MARK: - Settings
+"settings_title" = "설정";
+"app_name" = "비트코이너";
+"app_tagline" = "비트코인 시장 인텔리전스";
+"version" = "버전";
+"general" = "일반";
+"language" = "언어";
+"auto_refresh" = "자동 새로고침";
+"refresh_interval" = "새로고침 간격";
+"haptic_feedback" = "햅틱 피드백";
+"data_sources" = "데이터 소스";
+"active" = "활성";
+"premium" = "프리미엄";
+"about" = "앱 정보";
+"rate_app" = "앱 평가하기";
+"send_feedback" = "피드백 보내기";
+"privacy_policy" = "개인정보 처리방침";
+"terms_of_service" = "이용약관";
+"disclaimer" = "이 앱은 정보 제공 목적으로만 제공되며 금융 조언으로 간주되어서는 안 됩니다. 투자 결정을 내리기 전에 항상 직접 조사하세요.";
+
+// MARK: - Time Intervals
+"seconds_15" = "15초";
+"seconds_30" = "30초";
+"minute_1" = "1분";
+"minutes_5" = "5분";
+
+// MARK: - Historical Prices
+"time_machine" = "타임머신";
+"years_ago" = "년 전";
+"year_ago" = "년 전";
+"months_ago" = "개월 전";
+"since_price" = "이후";
+
+// MARK: - Asset Comparison
+"asset_comparison" = "자산 비교";
+"btc_vs_gold" = "BTC vs 금 vs 부동산";
+
+// MARK: - Debt Counter
+"us_debt" = "미국 국가 부채";
+"debt_per_second" = "초당 증가";
+"btc_equivalent" = "BTC 환산";
+
+// MARK: - Hyperinflation
+"hyperinflation" = "초인플레이션 국가";
+"fiat_warning" = "법정화폐가 무너질 때, 비트코인이 오른다";
+
+// MARK: - Wallets
+"hardware_wallets" = "하드웨어";
+"software_wallets" = "소프트웨어";
+"multisig_wallets" = "멀티시그";
+"lightning_wallets" = "라이트닝";
+"all_wallets" = "전체";
+
+// MARK: - Books
+"essential_books" = "필수";
+"general_books" = "일반";
+"all_books" = "전체";
+
+// MARK: - YouTubers
+"korean_youtubers" = "국내";
+"international_youtubers" = "해외";
+"all_channels" = "전체";
+
+// MARK: - Common
+"view_channel" = "채널 보기";
+"subscribers" = "구독자";
+"price_data" = "가격 및 시장 데이터";
+
+// MARK: - Korean Market
+"korean_exchanges" = "국내 거래소";
+"crypto_tax_korea" = "한국 암호화폐 세금";
+"travel_rule" = "트래블룰";
+"tax_disclaimer" = "이 정보는 교육 목적으로만 제공됩니다. 구체적인 조언은 세무 전문가와 상담하세요.";
+
+// MARK: - Price Card
+"price_24h_high" = "24시간 고가";
+"price_24h_low" = "24시간 저가";
+"market_cap" = "시가총액";
+"volume_24h" = "24시간 거래량";
+
+// MARK: - Privacy Policy
+"privacy_title" = "개인정보 처리방침";
+"privacy_updated" = "최종 업데이트: 2026년 1월";
+"privacy_info_collect" = "수집하는 정보";
+"privacy_info_collect_content" = "비트코이너는 개인정보를 수집, 저장 또는 공유하지 않습니다. 앱에 표시되는 모든 데이터는 공개 API에서 가져오며 당사 서버에 저장되지 않습니다.";
+"privacy_third_party" = "제3자 서비스";
+"privacy_third_party_content" = "시장 데이터를 가져오기 위해 제3자 API(CoinGecko, Alternative.me, Binance)를 사용합니다. 데이터 처리 방법에 대해서는 각 서비스의 개인정보 처리방침을 참조하세요.";
+"privacy_local_storage" = "로컬 저장소";
+"privacy_local_storage_content" = "사용자 설정은 표준 iOS 메커니즘을 사용하여 기기에 로컬로 저장됩니다. 이 데이터는 외부 서버로 전송되지 않습니다.";
+"privacy_contact" = "문의";
+"privacy_contact_content" = "이 개인정보 처리방침에 대한 질문이 있으시면 연락해 주세요.";
+
+// MARK: - Terms of Service
+"terms_title" = "이용약관";
+"terms_updated" = "최종 업데이트: 2026년 1월";
+"terms_acceptance" = "동의";
+"terms_acceptance_content" = "비트코이너를 사용함으로써 이 이용약관에 동의하게 됩니다.";
+"terms_disclaimer" = "면책조항";
+"terms_disclaimer_content" = "이 앱에서 제공하는 정보는 일반적인 정보 제공 목적으로만 제공됩니다. 금융, 투자 또는 거래 조언으로 간주되어서는 안 됩니다. 투자 결정을 내리기 전에 항상 자격을 갖춘 재무 고문과 상담하세요.";
+"terms_no_warranties" = "무보증";
+"terms_no_warranties_content" = "앱은 어떠한 보증 없이 '있는 그대로' 제공됩니다. 표시되는 데이터의 정확성, 완전성 또는 신뢰성을 보장하지 않습니다.";
+"terms_limitation" = "책임 제한";
+"terms_limitation_content" = "이 앱의 사용 또는 제공되는 정보로 인해 발생하는 어떠한 손해에 대해서도 책임을 지지 않습니다.";
+
+// MARK: - Self-Custody Guide
+"self_custody_nav_title" = "셀프 커스터디 가이드";
+"take_control" = "비트코인을 직접 관리하세요";
+"self_custody_intro" = "셀프 커스터디는 비트코인 주권의 기초입니다. 자산을 안전하게 보호하기 위한 핵심 개념을 배워보세요.";
+"remember" = "기억하세요";
+"reminder_seed_phrase" = "시드 구문을 절대 누구와도 공유하지 마세요";
+"reminder_verify_address" = "하드웨어 지갑에서 항상 주소를 확인하세요";
+"reminder_test_backup" = "큰 금액을 저장하기 전에 백업을 테스트하세요";
+"reminder_keep_updated" = "소프트웨어와 펌웨어를 최신으로 유지하세요";
+"key_points" = "핵심 포인트";
+
+// MARK: - Guide Sections
+"guide_what_is_custody" = "셀프 커스터디란?";
+"guide_what_is_custody_content" = "셀프 커스터디는 자신의 개인키를 직접 보유하여 비트코인을 완전히 통제하는 것입니다. 거래소에 자금을 보관하는 것과 달리, 제3자가 자산을 동결, 압류하거나 잃어버릴 수 없습니다.";
+"guide_custody_point_1" = "개인키를 직접 관리합니다";
+"guide_custody_point_2" = "제3자가 자금을 동결할 수 없습니다";
+"guide_custody_point_3" = "보안에 대한 책임은 본인에게 있습니다";
+"guide_custody_point_4" = "\"니 키가 아니면 니 코인이 아니다\"";
+
+"guide_keys" = "개인키 & 공개키";
+"guide_keys_content" = "개인키는 소유권을 증명하고 비트코인을 사용할 수 있게 하는 비밀 숫자입니다. 공개키(및 주소)는 비트코인을 받기 위해 누구에게나 공유할 수 있습니다. 개인키는 절대 공유하지 마세요!";
+"guide_keys_point_1" = "개인키 = 비밀, 절대 공유 금지";
+"guide_keys_point_2" = "공개키/주소 = 공유해도 안전";
+"guide_keys_point_3" = "개인키로 거래에 서명합니다";
+"guide_keys_point_4" = "개인키를 가진 사람이 비트코인을 통제합니다";
+
+"guide_seed" = "시드 구문 (BIP39)";
+"guide_seed_content" = "시드 구문은 개인키의 사람이 읽을 수 있는 백업입니다. 일반적으로 지갑 전체를 복원할 수 있는 12개 또는 24개의 단어입니다. 이것은 보호해야 할 가장 중요한 정보입니다.";
+"guide_seed_point_1" = "표준 목록에서 12개 또는 24개 단어";
+"guide_seed_point_2" = "모든 지갑을 복원할 수 있습니다";
+"guide_seed_point_3" = "종이나 금속에 기록, 디지털 저장 금지";
+"guide_seed_point_4" = "여러 안전한 장소에 보관하세요";
+
+"guide_hot_cold" = "핫 vs 콜드 지갑";
+"guide_hot_cold_content" = "핫 지갑은 인터넷에 연결됩니다(모바일/데스크톱 앱). 콜드 지갑은 오프라인입니다(하드웨어 지갑, 종이). 콜드 스토리지가 더 안전하지만 빈번한 거래에는 덜 편리합니다.";
+"guide_hot_cold_point_1" = "핫 = 인터넷 연결, 편리함";
+"guide_hot_cold_point_2" = "콜드 = 오프라인, 더 안전함";
+"guide_hot_cold_point_3" = "큰 금액은 콜드 스토리지에 보관";
+"guide_hot_cold_point_4" = "일상 지출에는 핫 지갑 사용";
+
+"guide_multisig" = "싱글시그 vs 멀티시그";
+"guide_multisig_content" = "싱글시그는 사용에 하나의 키가 필요합니다. 멀티시그는 여러 키가 필요합니다(예: 2-of-3). 멀티시그는 도난과 단일 장애점에 대해 더 나은 보안을 제공합니다.";
+"guide_multisig_point_1" = "싱글시그 = 하나의 키 필요";
+"guide_multisig_point_2" = "멀티시그 = 여러 키 필요";
+"guide_multisig_point_3" = "2-of-3이 인기 있는 설정";
+"guide_multisig_point_4" = "단일 장애점 제거";
+
+"guide_mistakes" = "피해야 할 일반적인 실수";
+"guide_mistakes_content" = "많은 사람들이 예방 가능한 실수로 비트코인을 잃습니다. 다른 사람의 실수에서 배워 자산을 보호하세요.";
+"guide_mistakes_point_1" = "시드 구문을 디지털로 저장";
+"guide_mistakes_point_2" = "약하거나 재사용된 비밀번호 사용";
+"guide_mistakes_point_3" = "피싱 사기에 속음";
+"guide_mistakes_point_4" = "백업 복구 테스트 안 함";
+"guide_mistakes_point_5" = "거래소에 장기간 자금 보관";
+
+// MARK: - Security Checklist
+"security_nav_title" = "보안 체크리스트";
+"reset_checklist" = "체크리스트 초기화";
+"your_progress" = "진행 상황";
+"of_completed" = "%d개 중 완료";
+"status_start" = "비트코인 보안을 시작하세요!";
+"status_good_start" = "좋은 시작입니다! 계속하세요.";
+"status_progress" = "진행 중! 거의 다 왔습니다.";
+"status_great" = "잘하고 있습니다! 몇 단계만 더!";
+"status_excellent" = "훌륭합니다! 비트코인이 잘 보호되고 있습니다!";
+"why_this_matters" = "왜 중요한가";
+"tips" = "팁";
+"done" = "완료";
+
+// MARK: - Security Items
+"sec_backup_seed" = "시드 구문 백업하기";
+"sec_backup_seed_desc" = "12개 또는 24개 단어를 종이나 금속에 적으세요. 절대 디지털로 저장하지 마세요.";
+"sec_backup_tip_1" = "화재/수해 방지를 위해 금속 백업 사용";
+"sec_backup_tip_2" = "여러 안전한 장소에 보관";
+"sec_backup_tip_3" = "절대 사진이나 스크린샷 찍지 않기";
+"sec_backup_tip_4" = "Shamir 백업으로 분할 고려";
+
+"sec_never_share" = "시드 구문 절대 공유하지 않기";
+"sec_never_share_desc" = "정당한 서비스는 시드 구문을 요청하지 않습니다. 요청하는 사람은 사기꾼입니다.";
+"sec_never_share_tip_1" = "고객지원은 절대 시드를 요청하지 않습니다";
+"sec_never_share_tip_2" = "어떤 '인증'도 시드가 필요하지 않습니다";
+"sec_never_share_tip_3" = "피싱 웹사이트를 조심하세요";
+"sec_never_share_tip_4" = "어떤 웹사이트에도 시드를 입력하지 마세요";
+
+"sec_verify_address" = "수신 주소 확인하기";
+"sec_verify_address_desc" = "수신 전 항상 하드웨어 지갑 화면에서 주소를 확인하세요.";
+"sec_verify_tip_1" = "처음과 마지막 6자 확인";
+"sec_verify_tip_2" = "하드웨어 지갑 화면에서 확인";
+"sec_verify_tip_3" = "클립보드 악성코드 주의";
+"sec_verify_tip_4" = "먼저 소액 테스트 거래 보내기";
+
+"sec_passphrase" = "패스프레이즈(25번째 단어) 사용하기";
+"sec_passphrase_desc" = "추가 보안 레이어를 위해 시드에 추가 단어를 더하세요.";
+"sec_passphrase_tip_1" = "숨겨진 지갑 생성";
+"sec_passphrase_tip_2" = "그럴듯한 부인권 제공";
+"sec_passphrase_tip_3" = "암기하거나 시드와 별도로 보관";
+"sec_passphrase_tip_4" = "자금 저장 전 복구 테스트";
+
+"sec_test_recovery" = "복구 과정 테스트하기";
+"sec_test_recovery_desc" = "많은 자금을 저장하기 전에 지갑 복구를 연습하세요.";
+"sec_test_recovery_tip_1" = "먼저 소액으로 사용";
+"sec_test_recovery_tip_2" = "기기를 초기화하고 복원";
+"sec_test_recovery_tip_3" = "자금에 접근할 수 있는지 확인";
+"sec_test_recovery_tip_4" = "과정을 직접 문서화";
+
+"sec_keep_updated" = "소프트웨어 최신 상태 유지하기";
+"sec_keep_updated_desc" = "보안 패치를 위해 지갑 소프트웨어와 펌웨어를 정기적으로 업데이트하세요.";
+"sec_keep_updated_tip_1" = "업데이트 알림 활성화";
+"sec_keep_updated_tip_2" = "공식 소스에서 업데이트 확인";
+"sec_keep_updated_tip_3" = "변경사항 릴리스 노트 읽기";
+"sec_keep_updated_tip_4" = "주요 업데이트 전 백업";
+
+"sec_hardware_wallet" = "큰 금액에는 하드웨어 지갑 사용하기";
+"sec_hardware_wallet_desc" = "큰 자금은 거래소나 핫 지갑이 아닌 하드웨어 지갑에 보관하세요.";
+"sec_hardware_tip_1" = "핫 지갑에는 사용 자금만 보관";
+"sec_hardware_tip_2" = "'니 키가 아니면 니 코인이 아니다' 규칙 사용";
+"sec_hardware_tip_3" = "큰 금액에는 멀티시그 고려";
+"sec_hardware_tip_4" = "여러 기기로 분산";
+
+"sec_phishing" = "피싱 공격 조심하기";
+"sec_phishing_desc" = "항상 올바른 웹사이트에 있는지, 공식 소스에서 다운로드하는지 확인하세요.";
+"sec_phishing_tip_1" = "공식 사이트 북마크";
+"sec_phishing_tip_2" = "SSL 인증서 확인";
+"sec_phishing_tip_3" = "이메일의 링크 클릭하지 않기";
+"sec_phishing_tip_4" = "공식 소스에서만 다운로드";
+
+"sec_inheritance" = "상속 계획 설정하기";
+"sec_inheritance_desc" = "당신에게 일이 생기면 사랑하는 사람들이 비트코인에 접근할 수 있도록 하세요.";
+"sec_inheritance_tip_1" = "가족과 멀티시그 고려";
+"sec_inheritance_tip_2" = "Casa나 Unchained 같은 서비스 이용";
+"sec_inheritance_tip_3" = "명확한 지침 작성";
+"sec_inheritance_tip_4" = "정보를 안전하게 보관";
+
+"sec_opsec" = "운영 보안 실천하기";
+"sec_opsec_desc" = "보유량을 공개적으로 밝히지 마세요. 비트코인 보유 사실을 아는 사람을 조심하세요.";
+"sec_opsec_tip_1" = "온라인에 보유량 게시하지 않기";
+"sec_opsec_tip_2" = "금액에 대해 모호하게 하기";
+"sec_opsec_tip_3" = "프라이버시를 위해 다른 주소 사용";
+"sec_opsec_tip_4" = "자체 노드 운영 고려";
+
+"importance_critical" = "중요";
+"importance_high" = "높음";
+"importance_medium" = "보통";
+
+// MARK: - Wallet Types
+"wallet_type_hardware" = "하드웨어";
+"wallet_type_diy" = "DIY/에어갭";
+"wallet_type_software" = "소프트웨어";
+"wallet_type_multisig" = "멀티시그";
+"wallet_type_hardware_desc" = "개인키를 오프라인으로 저장하는 전용 기기";
+"wallet_type_diy_desc" = "최대 보안을 위한 오픈소스, 직접 만드는 하드웨어 지갑";
+"wallet_type_software_desc" = "키를 완전히 통제할 수 있는 앱";
+"wallet_type_multisig_desc" = "거래에 여러 키 필요 - 궁극의 보안";
+
+// MARK: - Wallet List
+"wallets_nav_title" = "지갑";
+"legend" = "범례";
+"open_source" = "오픈소스";
+"bitcoin_only" = "비트코인 전용";
+"features" = "기능";
+"pros" = "장점";
+"cons" = "단점";
+"visit_website" = "공식 웹사이트 방문";
+
+// MARK: - Quote Card
+"bitcoin_wisdom" = "비트코인 명언";
+"quote_of_the_day" = "오늘의 명언";
+"share_quote" = "명언 공유";
+
+// MARK: - Hyperinflation Card
+"fiat_graveyard" = "법정화폐의 무덤";
+"btc_forever" = "2,100만개. 영원히. ₿";
+"tap_for_details" = "자세히 보기";
+"crisis" = "위기";
+"severe" = "심각";
+"high" = "높음";
+"total" = "합계";
+"source" = "출처";
+"fiat_failures" = "법정화폐 실패";
+"currency_destruction" = "화폐 파괴";
+"countries_high_inflation" = "현재 15%% 이상 인플레이션을 겪고 있는 %d개국";
+"crisis_level" = "위기 수준 (>100%%)";
+"severe_level" = "심각 (50-100%%)";
+"high_level" = "높음 (15-50%%)";
+"countries" = "개국";
+"historical_events" = "역사상 %d개의 주요 초인플레이션 사건";
+"worst_hyperinflations" = "역사상 최악의 초인플레이션";
+"bitcoin_the_exit" = "비트코인: 탈출구";
+"fixed_supply" = "고정 공급량: 최대 2,100만개, 영원히";
+"no_central_bank" = "중앙은행이 더 이상 발행할 수 없음";
+"transparent_policy" = "투명한 통화 정책";
+"borderless_escape" = "국경 없음: 자본 통제 회피";
+"self_custody_bank" = "셀프 커스터디: 자신만의 은행이 되기";
+"adoption_highest" = "비트코인 채택률이 가장 높은 국가:";
+"high_inflation" = "높은 인플레이션";
+"capital_controls" = "자본 통제";
+"currency_crises" = "통화 위기";
+"data_from" = "데이터 출처: %@";
+"consumer_price_inflation" = "소비자물가 인플레이션 (연간 %%). 최종 업데이트: %@";
+"historical" = "역사";
+"current" = "현재";

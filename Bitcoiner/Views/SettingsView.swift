@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @ObservedObject private var localizationManager = LocalizationManager.shared
     @AppStorage("autoRefreshEnabled") private var autoRefreshEnabled = true
     @AppStorage("refreshInterval") private var refreshInterval = 30
     @AppStorage("hapticFeedbackEnabled") private var hapticFeedbackEnabled = true
@@ -23,15 +24,15 @@ struct SettingsView: View {
                             .foregroundColor(AppColors.bitcoinOrange)
                         
                         VStack(alignment: .leading, spacing: 4) {
-                            Text("Bitcoiner")
+                            Text(L10n.appName)
                                 .font(.system(size: 20, weight: .bold))
                                 .foregroundColor(AppColors.primaryText)
                             
-                            Text("Bitcoin Market Intelligence")
+                            Text(L10n.appTagline)
                                 .font(.system(size: 12))
                                 .foregroundColor(AppColors.secondaryText)
                             
-                            Text("Version 1.0.0")
+                            Text("\(L10n.version) 1.0.0")
                                 .font(.system(size: 11))
                                 .foregroundColor(AppColors.tertiaryText)
                         }
@@ -41,67 +42,106 @@ struct SettingsView: View {
                 .listRowBackground(AppColors.cardBackground)
                 
                 // General Settings
-                Section("General") {
+                Section(L10n.general) {
+                    // Language Switcher
+                    HStack {
+                        SettingsRow(icon: "globe", title: L10n.language, iconColor: AppColors.profitGreen)
+                        
+                        Spacer()
+                        
+                        Menu {
+                            ForEach(AppLanguage.allCases, id: \.self) { language in
+                                Button {
+                                    withAnimation(.easeInOut(duration: 0.3)) {
+                                        localizationManager.setLanguage(language)
+                                    }
+                                } label: {
+                                    HStack {
+                                        Text("\(language.flag) \(language.displayName)")
+                                        if localizationManager.currentLanguage == language {
+                                            Image(systemName: "checkmark")
+                                        }
+                                    }
+                                }
+                            }
+                        } label: {
+                            HStack(spacing: 6) {
+                                Text(localizationManager.currentLanguage.flag)
+                                    .font(.system(size: 16))
+                                Text(localizationManager.currentLanguage.displayName)
+                                    .font(.system(size: 14, weight: .medium))
+                                    .foregroundColor(AppColors.bitcoinOrange)
+                                Image(systemName: "chevron.down")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(AppColors.bitcoinOrange)
+                            }
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 6)
+                            .background(AppColors.bitcoinOrange.opacity(0.15))
+                            .cornerRadius(8)
+                        }
+                    }
+                    
                     Toggle(isOn: $autoRefreshEnabled) {
-                        SettingsRow(icon: "arrow.clockwise", title: "Auto Refresh", iconColor: AppColors.bitcoinOrange)
+                        SettingsRow(icon: "arrow.clockwise", title: L10n.autoRefresh, iconColor: AppColors.bitcoinOrange)
                     }
                     .tint(AppColors.bitcoinOrange)
                     
                     if autoRefreshEnabled {
                         Picker(selection: $refreshInterval) {
-                            Text("15 seconds").tag(15)
-                            Text("30 seconds").tag(30)
-                            Text("1 minute").tag(60)
-                            Text("5 minutes").tag(300)
+                            Text(L10n.seconds15).tag(15)
+                            Text(L10n.seconds30).tag(30)
+                            Text(L10n.minute1).tag(60)
+                            Text(L10n.minutes5).tag(300)
                         } label: {
-                            SettingsRow(icon: "timer", title: "Refresh Interval", iconColor: AppColors.profitGreen)
+                            SettingsRow(icon: "timer", title: L10n.refreshInterval, iconColor: AppColors.profitGreen)
                         }
                     }
                     
                     Toggle(isOn: $hapticFeedbackEnabled) {
-                        SettingsRow(icon: "hand.tap", title: "Haptic Feedback", iconColor: AppColors.neutralYellow)
+                        SettingsRow(icon: "hand.tap", title: L10n.hapticFeedback, iconColor: AppColors.neutralYellow)
                     }
                     .tint(AppColors.bitcoinOrange)
                 }
                 .listRowBackground(AppColors.cardBackground)
                 
                 // Data Sources Section
-                Section("Data Sources") {
-                    DataSourceRow(name: "CoinGecko", status: "Active", statusColor: AppColors.profitGreen, description: "Price & Market Data")
-                    DataSourceRow(name: "Alternative.me", status: "Active", statusColor: AppColors.profitGreen, description: "Fear & Greed Index")
-                    DataSourceRow(name: "Binance Futures", status: "Active", statusColor: AppColors.profitGreen, description: "Long/Short Ratio")
-                    DataSourceRow(name: "CryptoQuant", status: "Premium", statusColor: AppColors.neutralYellow, description: "Exchange Reserves")
-                    DataSourceRow(name: "Coinglass", status: "Premium", statusColor: AppColors.neutralYellow, description: "Liquidation Map")
+                Section(L10n.dataSources) {
+                    DataSourceRow(name: "CoinGecko", status: L10n.active, statusColor: AppColors.profitGreen, description: L10n.priceData)
+                    DataSourceRow(name: "Alternative.me", status: L10n.active, statusColor: AppColors.profitGreen, description: L10n.fearGreedIndex)
+                    DataSourceRow(name: "Binance Futures", status: L10n.active, statusColor: AppColors.profitGreen, description: L10n.longShortRatio)
+                    DataSourceRow(name: "CryptoQuant", status: L10n.premium, statusColor: AppColors.neutralYellow, description: L10n.exchangeReserves)
+                    DataSourceRow(name: "Coinglass", status: L10n.premium, statusColor: AppColors.neutralYellow, description: "Liquidation Map")
                 }
                 .listRowBackground(AppColors.cardBackground)
                 
                 // About Section
-                Section("About") {
+                Section(L10n.about) {
                     Link(destination: URL(string: "https://github.com")!) {
-                        SettingsRow(icon: "star.fill", title: "Rate App", iconColor: AppColors.neutralYellow)
+                        SettingsRow(icon: "star.fill", title: L10n.rateApp, iconColor: AppColors.neutralYellow)
                     }
                     
                     Link(destination: URL(string: "https://github.com")!) {
-                        SettingsRow(icon: "envelope.fill", title: "Send Feedback", iconColor: AppColors.bitcoinOrange)
+                        SettingsRow(icon: "envelope.fill", title: L10n.sendFeedback, iconColor: AppColors.bitcoinOrange)
                     }
                     
                     NavigationLink {
                         PrivacyPolicyView()
                     } label: {
-                        SettingsRow(icon: "hand.raised.fill", title: "Privacy Policy", iconColor: AppColors.secondaryText)
+                        SettingsRow(icon: "hand.raised.fill", title: L10n.privacyPolicy, iconColor: AppColors.secondaryText)
                     }
                     
                     NavigationLink {
                         TermsOfServiceView()
                     } label: {
-                        SettingsRow(icon: "doc.text.fill", title: "Terms of Service", iconColor: AppColors.secondaryText)
+                        SettingsRow(icon: "doc.text.fill", title: L10n.termsOfService, iconColor: AppColors.secondaryText)
                     }
                 }
                 .listRowBackground(AppColors.cardBackground)
                 
                 // Disclaimer
                 Section {
-                    Text("This app is for informational purposes only and should not be considered financial advice. Always do your own research before making investment decisions.")
+                    Text(L10n.disclaimer)
                         .font(.system(size: 11))
                         .foregroundColor(AppColors.tertiaryText)
                 }
@@ -109,7 +149,7 @@ struct SettingsView: View {
             }
             .scrollContentBackground(.hidden)
             .background(AppColors.primaryBackground)
-            .navigationTitle("Settings")
+            .navigationTitle(L10n.settingsTitle)
             .navigationBarTitleDisplayMode(.large)
         }
     }
@@ -175,21 +215,21 @@ struct PrivacyPolicyView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                Text("Privacy Policy")
+                Text("privacy_title".localized)
                     .font(.system(size: 24, weight: .bold))
                     .foregroundColor(AppColors.primaryText)
                 
-                Text("Last updated: January 2026")
+                Text("privacy_updated".localized)
                     .font(.system(size: 12))
                     .foregroundColor(AppColors.secondaryText)
                 
-                policySection(title: "Information We Collect", content: "Bitcoiner does not collect, store, or share any personal information. All data displayed in the app is fetched from public APIs and is not stored on our servers.")
+                policySection(title: "privacy_info_collect".localized, content: "privacy_info_collect_content".localized)
                 
-                policySection(title: "Third-Party Services", content: "We use third-party APIs (CoinGecko, Alternative.me, Binance) to fetch market data. Please refer to their respective privacy policies for information on how they handle data.")
+                policySection(title: "privacy_third_party".localized, content: "privacy_third_party_content".localized)
                 
-                policySection(title: "Local Storage", content: "User preferences are stored locally on your device using standard iOS mechanisms. This data is not transmitted to any external servers.")
+                policySection(title: "privacy_local_storage".localized, content: "privacy_local_storage_content".localized)
                 
-                policySection(title: "Contact", content: "If you have any questions about this Privacy Policy, please contact us.")
+                policySection(title: "privacy_contact".localized, content: "privacy_contact_content".localized)
             }
             .padding()
         }
@@ -218,21 +258,21 @@ struct TermsOfServiceView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                Text("Terms of Service")
+                Text("terms_title".localized)
                     .font(.system(size: 24, weight: .bold))
                     .foregroundColor(AppColors.primaryText)
                 
-                Text("Last updated: January 2026")
+                Text("terms_updated".localized)
                     .font(.system(size: 12))
                     .foregroundColor(AppColors.secondaryText)
                 
-                termsSection(title: "Acceptance", content: "By using Bitcoiner, you agree to these Terms of Service.")
+                termsSection(title: "terms_acceptance".localized, content: "terms_acceptance_content".localized)
                 
-                termsSection(title: "Disclaimer", content: "The information provided in this app is for general informational purposes only. It should not be considered as financial, investment, or trading advice. Always consult with a qualified financial advisor before making investment decisions.")
+                termsSection(title: "terms_disclaimer".localized, content: "terms_disclaimer_content".localized)
                 
-                termsSection(title: "No Warranties", content: "The app is provided 'as is' without any warranties. We do not guarantee the accuracy, completeness, or reliability of the data displayed.")
+                termsSection(title: "terms_no_warranties".localized, content: "terms_no_warranties_content".localized)
                 
-                termsSection(title: "Limitation of Liability", content: "We shall not be liable for any damages arising from the use of this app or the information it provides.")
+                termsSection(title: "terms_limitation".localized, content: "terms_limitation_content".localized)
             }
             .padding()
         }

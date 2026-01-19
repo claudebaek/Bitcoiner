@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WalletListView: View {
+    @ObservedObject private var localizationManager = LocalizationManager.shared
     @State private var selectedType: WalletType = .hardware
     @State private var selectedWallet: Wallet?
     
@@ -33,7 +34,7 @@ struct WalletListView: View {
             .padding()
         }
         .background(AppColors.primaryBackground)
-        .navigationTitle("Wallets")
+        .navigationTitle(L10n.walletsNavTitle)
         .navigationBarTitleDisplayMode(.inline)
         .sheet(item: $selectedWallet) { wallet in
             WalletDetailSheet(wallet: wallet)
@@ -76,13 +77,13 @@ struct WalletListView: View {
     
     private var legendSection: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Legend")
+            Text(L10n.legend)
                 .font(.system(size: 13, weight: .semibold))
                 .foregroundColor(AppColors.primaryText)
             
             HStack(spacing: 16) {
-                WalletLegendItem(icon: "lock.open.fill", text: "Open Source", color: AppColors.profitGreen)
-                WalletLegendItem(icon: "bitcoinsign.circle.fill", text: "Bitcoin Only", color: AppColors.bitcoinOrange)
+                WalletLegendItem(icon: "lock.open.fill", text: L10n.openSource, color: AppColors.profitGreen)
+                WalletLegendItem(icon: "bitcoinsign.circle.fill", text: L10n.bitcoinOnly, color: AppColors.bitcoinOrange)
             }
         }
         .padding()
@@ -103,7 +104,7 @@ struct WalletTypeButton: View {
                 Image(systemName: type.icon)
                     .font(.system(size: 12))
                 
-                Text(type.rawValue)
+                Text(type.localizedName)
                     .font(.system(size: 13, weight: .medium))
             }
             .foregroundColor(isSelected ? .black : AppColors.primaryText)
@@ -209,14 +210,14 @@ struct WalletDetailSheet: View {
                             .foregroundColor(AppColors.primaryText)
                         
                         HStack(spacing: 8) {
-                            TypeBadge(text: wallet.type.rawValue, color: AppColors.bitcoinOrange)
+                            TypeBadge(text: wallet.type.localizedName, color: AppColors.bitcoinOrange)
                             
                             if wallet.isOpenSource {
-                                TypeBadge(text: "Open Source", color: AppColors.profitGreen)
+                                TypeBadge(text: L10n.openSource, color: AppColors.profitGreen)
                             }
                             
                             if wallet.isBitcoinOnly {
-                                TypeBadge(text: "Bitcoin Only", color: AppColors.neutralYellow)
+                                TypeBadge(text: L10n.bitcoinOnly, color: AppColors.neutralYellow)
                             }
                         }
                         
@@ -228,19 +229,19 @@ struct WalletDetailSheet: View {
                     .padding()
                     
                     // Features
-                    DetailSection(title: "Features", items: wallet.features, icon: "star.fill", color: AppColors.bitcoinOrange)
+                    DetailSection(title: L10n.features, items: wallet.features, icon: "star.fill", color: AppColors.bitcoinOrange)
                     
                     // Pros
-                    DetailSection(title: "Pros", items: wallet.pros, icon: "checkmark.circle.fill", color: AppColors.profitGreen)
+                    DetailSection(title: L10n.pros, items: wallet.pros, icon: "checkmark.circle.fill", color: AppColors.profitGreen)
                     
                     // Cons
-                    DetailSection(title: "Cons", items: wallet.cons, icon: "xmark.circle.fill", color: AppColors.lossRed)
+                    DetailSection(title: L10n.cons, items: wallet.cons, icon: "xmark.circle.fill", color: AppColors.lossRed)
                     
                     // Website Button
                     Link(destination: wallet.url) {
                         HStack {
                             Image(systemName: "globe")
-                            Text("Visit Official Website")
+                            Text(L10n.visitWebsite)
                         }
                         .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(.black)
@@ -257,7 +258,7 @@ struct WalletDetailSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
+                    Button(L10n.done) {
                         dismiss()
                     }
                     .foregroundColor(AppColors.bitcoinOrange)

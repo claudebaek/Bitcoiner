@@ -1,0 +1,448 @@
+/* 
+  Localizable.strings (English)
+  Bitcoiner
+
+  Created by leejay100 on 1/19/26.
+*/
+
+// MARK: - Tab Bar
+"tab_dashboard" = "Dashboard";
+"tab_market" = "Market";
+"tab_positions" = "Positions";
+"tab_learn" = "Learn";
+"tab_settings" = "Settings";
+
+// MARK: - Dashboard
+"dashboard_title" = "Bitcoin";
+"loading_data" = "Loading Bitcoin data...";
+"quick_stats" = "Quick Stats";
+"circulating_supply" = "Circulating Supply";
+"of_max_supply" = "of 21M max";
+"market_sentiment" = "Market Sentiment";
+"retry" = "Retry";
+"last_updated" = "Last updated:";
+
+// MARK: - Fear & Greed
+"fear_greed_index" = "Fear & Greed Index";
+"extreme_fear" = "Extreme Fear";
+"fear" = "Fear";
+"neutral" = "Neutral";
+"greed" = "Greed";
+"extreme_greed" = "Extreme Greed";
+
+// MARK: - Market Data
+"market_title" = "Market Data";
+"mining_data" = "Mining Data";
+"exchange_reserves" = "Exchange Reserves";
+"hash_rate" = "Hash Rate";
+"difficulty" = "Difficulty";
+"block_height" = "Block Height";
+"mining_cost" = "Mining Cost";
+
+// MARK: - Positions
+"positions_title" = "Positions";
+"long_short_ratio" = "Long/Short Ratio";
+"long_positions" = "Long";
+"short_positions" = "Short";
+
+// MARK: - Learn
+"learn_title" = "Learn";
+"self_custody_guide" = "Self-Custody Guide";
+"self_custody_subtitle" = "Learn why and how to hold your own keys";
+"wallet_recommendations" = "Wallet Recommendations";
+"wallet_subtitle" = "Hardware, software, and multisig options";
+"security_checklist" = "Security Checklist";
+"security_subtitle" = "Essential steps to protect your Bitcoin";
+"korean_market_info" = "Korean Market Info";
+"korean_market_subtitle" = "Exchanges, taxes, and regulations in Korea";
+"bitcoin_books" = "Bitcoin Books";
+"books_subtitle" = "Essential and recommended reading list";
+"youtube_channels" = "YouTube Channels";
+"youtube_subtitle" = "Korean and international Bitcoin educators";
+"bitcoin_principles" = "Bitcoin Principles";
+"bitcoin_principles_subtitle" = "How Bitcoin works - visual guide";
+"concepts" = "concepts";
+
+// MARK: - Bitcoin Principles View
+"bp_nav_title" = "Bitcoin Principles";
+"bp_header_title" = "How Bitcoin Works";
+"bp_header_subtitle" = "A peer-to-peer electronic cash system";
+
+// Section Titles
+"bp_section_decentralized" = "1. Decentralized Network";
+"bp_section_blockchain" = "2. Blockchain Structure";
+"bp_section_mining" = "3. Mining & Proof of Work";
+"bp_section_supply" = "4. Limited Supply: 21 Million";
+"bp_section_p2p" = "5. Peer-to-Peer Transactions";
+
+// Decentralized Network
+"bp_decentralized_desc" = "No central authority. Thousands of computers (nodes) worldwide verify and store the Bitcoin blockchain independently.";
+
+// Blockchain
+"bp_prev_hash" = "Prev Hash";
+"bp_block" = "Block";
+"bp_blockchain_desc" = "Each block contains a cryptographic hash of the previous block, creating an unbreakable chain. Tampering with any block would require recalculating all subsequent blocks.";
+
+// Mining
+"bp_miners" = "Miners";
+"bp_solve_puzzle" = "Solve\nPuzzle";
+"bp_new_block" = "New Block";
+"bp_earn" = "Earn";
+"bp_reward" = "Reward";
+"bp_block_time" = "Block Time";
+"bp_difficulty" = "Difficulty";
+"bp_halving" = "Halving";
+"bp_block_time_value" = "~10 min";
+"bp_difficulty_value" = "Auto-adjust";
+"bp_halving_value" = "Every 4 yrs";
+"bp_mining_desc" = "Miners compete to solve complex mathematical puzzles. The winner adds a new block and earns Bitcoin rewards. Difficulty adjusts every 2,016 blocks to maintain ~10 minute block time.";
+
+// Supply
+"bp_mined" = "19.6M Mined";
+"bp_left" = "1.4M Left";
+"bp_max_supply" = "21,000,000 BTC (Max Supply)";
+"bp_halving_schedule" = "Bitcoin Halving Schedule";
+"bp_supply_desc" = "Unlike fiat money that can be printed infinitely, Bitcoin has a hard cap of 21 million. Block rewards halve every 210,000 blocks (~4 years), making Bitcoin increasingly scarce over time.";
+
+// P2P Transactions
+"bp_sender" = "Alice";
+"bp_receiver" = "Bob";
+"bp_signed_verified" = "Signed & Verified";
+"bp_private_key" = "Private Key";
+"bp_public_key" = "Public Key";
+"bp_secret_never_share" = "Secret, never share";
+"bp_your_address" = "Your address";
+"bp_p2p_desc" = "Transactions are signed with private keys and broadcast to the network. No banks or intermediaries needed. Anyone can verify transactions using the public blockchain.";
+
+// Key Properties
+"bp_key_properties" = "Key Properties";
+"bp_secure" = "Secure";
+"bp_secure_desc" = "Cryptographically protected";
+"bp_borderless" = "Borderless";
+"bp_borderless_desc" = "Send anywhere, anytime";
+"bp_pseudonymous" = "Pseudonymous";
+"bp_pseudonymous_desc" = "No personal info required";
+"bp_irreversible" = "Irreversible";
+"bp_irreversible_desc" = "No chargebacks";
+"bp_verifiable" = "Verifiable";
+"bp_verifiable_desc" = "Anyone can audit";
+"bp_immutable" = "Immutable";
+"bp_immutable_desc" = "Cannot be altered";
+
+// Quote
+"bp_quote" = "\"A purely peer-to-peer version of electronic cash would allow online payments to be sent directly from one party to another without going through a financial institution.\"";
+"bp_quote_author" = "— Satoshi Nakamoto, Bitcoin Whitepaper (2008)";
+"topics" = "topics";
+"wallets" = "wallets";
+"items" = "items";
+"books" = "books";
+"channels" = "channels";
+"education" = "Education";
+"self_custody_header" = "Bitcoin Self-Custody";
+"not_your_keys" = "Not your keys, not your coins";
+
+// MARK: - Settings
+"settings_title" = "Settings";
+"app_name" = "Bitcoiner";
+"app_tagline" = "Bitcoin Market Intelligence";
+"version" = "Version";
+"general" = "General";
+"language" = "Language";
+"auto_refresh" = "Auto Refresh";
+"refresh_interval" = "Refresh Interval";
+"haptic_feedback" = "Haptic Feedback";
+"data_sources" = "Data Sources";
+"active" = "Active";
+"premium" = "Premium";
+"about" = "About";
+"rate_app" = "Rate App";
+"send_feedback" = "Send Feedback";
+"privacy_policy" = "Privacy Policy";
+"terms_of_service" = "Terms of Service";
+"disclaimer" = "This app is for informational purposes only and should not be considered financial advice. Always do your own research before making investment decisions.";
+
+// MARK: - Time Intervals
+"seconds_15" = "15 seconds";
+"seconds_30" = "30 seconds";
+"minute_1" = "1 minute";
+"minutes_5" = "5 minutes";
+
+// MARK: - Historical Prices
+"time_machine" = "Time Machine";
+"years_ago" = "years ago";
+"year_ago" = "year ago";
+"months_ago" = "months ago";
+"since_price" = "since then";
+
+// MARK: - Asset Comparison
+"asset_comparison" = "Asset Comparison";
+"btc_vs_gold" = "BTC vs Gold vs Real Estate";
+
+// MARK: - Debt Counter
+"us_debt" = "US National Debt";
+"debt_per_second" = "per second";
+"btc_equivalent" = "BTC Equivalent";
+
+// MARK: - Hyperinflation
+"hyperinflation" = "Hyperinflation Nations";
+"fiat_warning" = "When fiat fails, Bitcoin rises";
+
+// MARK: - Wallets
+"hardware_wallets" = "Hardware";
+"software_wallets" = "Software";
+"multisig_wallets" = "Multisig";
+"lightning_wallets" = "Lightning";
+"all_wallets" = "All";
+
+// MARK: - Books
+"essential_books" = "Essential";
+"general_books" = "General";
+"all_books" = "All";
+
+// MARK: - YouTubers
+"korean_youtubers" = "Korean";
+"international_youtubers" = "International";
+"all_channels" = "All";
+
+// MARK: - Common
+"view_channel" = "View Channel";
+"subscribers" = "subscribers";
+"price_data" = "Price & Market Data";
+
+// MARK: - Korean Market
+"korean_exchanges" = "Korean Exchanges";
+"crypto_tax_korea" = "Crypto Tax in Korea";
+"travel_rule" = "Travel Rule";
+"tax_disclaimer" = "This information is for educational purposes only. Consult a tax professional for specific advice.";
+
+// MARK: - Price Card
+"price_24h_high" = "24h High";
+"price_24h_low" = "24h Low";
+"market_cap" = "Market Cap";
+"volume_24h" = "24h Volume";
+
+// MARK: - Privacy Policy
+"privacy_title" = "Privacy Policy";
+"privacy_updated" = "Last updated: January 2026";
+"privacy_info_collect" = "Information We Collect";
+"privacy_info_collect_content" = "Bitcoiner does not collect, store, or share any personal information. All data displayed in the app is fetched from public APIs and is not stored on our servers.";
+"privacy_third_party" = "Third-Party Services";
+"privacy_third_party_content" = "We use third-party APIs (CoinGecko, Alternative.me, Binance) to fetch market data. Please refer to their respective privacy policies for information on how they handle data.";
+"privacy_local_storage" = "Local Storage";
+"privacy_local_storage_content" = "User preferences are stored locally on your device using standard iOS mechanisms. This data is not transmitted to any external servers.";
+"privacy_contact" = "Contact";
+"privacy_contact_content" = "If you have any questions about this Privacy Policy, please contact us.";
+
+// MARK: - Terms of Service
+"terms_title" = "Terms of Service";
+"terms_updated" = "Last updated: January 2026";
+"terms_acceptance" = "Acceptance";
+"terms_acceptance_content" = "By using Bitcoiner, you agree to these Terms of Service.";
+"terms_disclaimer" = "Disclaimer";
+"terms_disclaimer_content" = "The information provided in this app is for general informational purposes only. It should not be considered as financial, investment, or trading advice. Always consult with a qualified financial advisor before making investment decisions.";
+"terms_no_warranties" = "No Warranties";
+"terms_no_warranties_content" = "The app is provided 'as is' without any warranties. We do not guarantee the accuracy, completeness, or reliability of the data displayed.";
+"terms_limitation" = "Limitation of Liability";
+"terms_limitation_content" = "We shall not be liable for any damages arising from the use of this app or the information it provides.";
+
+// MARK: - Self-Custody Guide
+"self_custody_nav_title" = "Self-Custody Guide";
+"take_control" = "Take Control of Your Bitcoin";
+"self_custody_intro" = "Self-custody is the foundation of Bitcoin sovereignty. Learn the essential concepts to secure your wealth.";
+"remember" = "Remember";
+"reminder_seed_phrase" = "Never share your seed phrase with anyone";
+"reminder_verify_address" = "Always verify addresses on your hardware wallet";
+"reminder_test_backup" = "Test your backup before storing large amounts";
+"reminder_keep_updated" = "Keep software and firmware updated";
+"key_points" = "Key Points";
+
+// MARK: - Guide Sections
+"guide_what_is_custody" = "What is Self-Custody?";
+"guide_what_is_custody_content" = "Self-custody means you hold your own private keys, giving you complete control over your Bitcoin. Unlike keeping funds on an exchange, no third party can freeze, seize, or lose your Bitcoin.";
+"guide_custody_point_1" = "You control your private keys";
+"guide_custody_point_2" = "No third party can freeze your funds";
+"guide_custody_point_3" = "You are responsible for security";
+"guide_custody_point_4" = "\"Not your keys, not your coins\"";
+
+"guide_keys" = "Private Keys & Public Keys";
+"guide_keys_content" = "Your private key is a secret number that proves ownership and allows you to spend your Bitcoin. Your public key (and address) can be shared with anyone to receive Bitcoin. Never share your private key!";
+"guide_keys_point_1" = "Private key = Your secret, never share";
+"guide_keys_point_2" = "Public key/address = Safe to share";
+"guide_keys_point_3" = "Private key signs transactions";
+"guide_keys_point_4" = "Anyone with private key controls the Bitcoin";
+
+"guide_seed" = "Seed Phrases (BIP39)";
+"guide_seed_content" = "A seed phrase is a human-readable backup of your private keys. It's typically 12 or 24 words that can restore your entire wallet. This is the most critical piece of information to protect.";
+"guide_seed_point_1" = "12 or 24 words from a standard list";
+"guide_seed_point_2" = "Can restore all your wallets";
+"guide_seed_point_3" = "Write on paper or metal, never digital";
+"guide_seed_point_4" = "Store in multiple secure locations";
+
+"guide_hot_cold" = "Hot vs Cold Wallets";
+"guide_hot_cold_content" = "Hot wallets are connected to the internet (mobile/desktop apps). Cold wallets are offline (hardware wallets, paper). Cold storage is more secure but less convenient for frequent transactions.";
+"guide_hot_cold_point_1" = "Hot = Internet connected, convenient";
+"guide_hot_cold_point_2" = "Cold = Offline, more secure";
+"guide_hot_cold_point_3" = "Keep large amounts in cold storage";
+"guide_hot_cold_point_4" = "Use hot wallet for daily spending";
+
+"guide_multisig" = "Single-sig vs Multi-sig";
+"guide_multisig_content" = "Single-signature requires one key to spend. Multi-signature (multisig) requires multiple keys (e.g., 2-of-3). Multisig provides better security against theft and single points of failure.";
+"guide_multisig_point_1" = "Single-sig = One key needed";
+"guide_multisig_point_2" = "Multi-sig = Multiple keys needed";
+"guide_multisig_point_3" = "2-of-3 is popular setup";
+"guide_multisig_point_4" = "Eliminates single point of failure";
+
+"guide_mistakes" = "Common Mistakes to Avoid";
+"guide_mistakes_content" = "Many people lose Bitcoin due to preventable mistakes. Learn from others' errors to protect your stack.";
+"guide_mistakes_point_1" = "Storing seed phrase digitally";
+"guide_mistakes_point_2" = "Using weak or reused passwords";
+"guide_mistakes_point_3" = "Falling for phishing scams";
+"guide_mistakes_point_4" = "Not testing backup recovery";
+"guide_mistakes_point_5" = "Leaving funds on exchanges long-term";
+
+// MARK: - Security Checklist
+"security_nav_title" = "Security Checklist";
+"reset_checklist" = "Reset Checklist";
+"your_progress" = "Your Progress";
+"of_completed" = "of %d completed";
+"status_start" = "Start securing your Bitcoin!";
+"status_good_start" = "Good start! Keep going.";
+"status_progress" = "Making progress! Almost there.";
+"status_great" = "Great job! Just a few more steps.";
+"status_excellent" = "Excellent! Your Bitcoin is well secured!";
+"why_this_matters" = "Why This Matters";
+"tips" = "Tips";
+"done" = "Done";
+
+// MARK: - Security Items
+"sec_backup_seed" = "Backup your seed phrase";
+"sec_backup_seed_desc" = "Write down your 12 or 24 words on paper or metal. Never store digitally.";
+"sec_backup_tip_1" = "Use metal backup for fire/water resistance";
+"sec_backup_tip_2" = "Store in multiple secure locations";
+"sec_backup_tip_3" = "Never take a photo or screenshot";
+"sec_backup_tip_4" = "Consider splitting with Shamir backup";
+
+"sec_never_share" = "Never share your seed phrase";
+"sec_never_share_desc" = "No legitimate service will ever ask for your seed phrase. Anyone who asks is a scammer.";
+"sec_never_share_tip_1" = "Support will NEVER ask for your seed";
+"sec_never_share_tip_2" = "No 'verification' requires your seed";
+"sec_never_share_tip_3" = "Beware of phishing websites";
+"sec_never_share_tip_4" = "Don't enter seed on any website";
+
+"sec_verify_address" = "Verify receive addresses";
+"sec_verify_address_desc" = "Always verify the address on your hardware wallet screen before receiving.";
+"sec_verify_tip_1" = "Check first and last 6 characters";
+"sec_verify_tip_2" = "Verify on hardware wallet display";
+"sec_verify_tip_3" = "Beware of clipboard malware";
+"sec_verify_tip_4" = "Send small test transaction first";
+
+"sec_passphrase" = "Use a passphrase (25th word)";
+"sec_passphrase_desc" = "Add an extra word to your seed for additional security layer.";
+"sec_passphrase_tip_1" = "Creates a hidden wallet";
+"sec_passphrase_tip_2" = "Provides plausible deniability";
+"sec_passphrase_tip_3" = "Memorize or store separately from seed";
+"sec_passphrase_tip_4" = "Test recovery before storing funds";
+
+"sec_test_recovery" = "Test your recovery process";
+"sec_test_recovery_desc" = "Practice recovering your wallet before storing significant funds.";
+"sec_test_recovery_tip_1" = "Use small amount first";
+"sec_test_recovery_tip_2" = "Wipe and restore your device";
+"sec_test_recovery_tip_3" = "Verify you can access funds";
+"sec_test_recovery_tip_4" = "Document the process for yourself";
+
+"sec_keep_updated" = "Keep software updated";
+"sec_keep_updated_desc" = "Regularly update your wallet software and firmware for security patches.";
+"sec_keep_updated_tip_1" = "Enable update notifications";
+"sec_keep_updated_tip_2" = "Verify updates from official sources";
+"sec_keep_updated_tip_3" = "Read release notes for changes";
+"sec_keep_updated_tip_4" = "Backup before major updates";
+
+"sec_hardware_wallet" = "Use hardware wallet for large amounts";
+"sec_hardware_wallet_desc" = "Keep significant funds on a hardware wallet, not on exchanges or hot wallets.";
+"sec_hardware_tip_1" = "Only keep spending money in hot wallet";
+"sec_hardware_tip_2" = "Use 'Not your keys, not your coins' rule";
+"sec_hardware_tip_3" = "Consider multisig for large amounts";
+"sec_hardware_tip_4" = "Diversify across multiple devices";
+
+"sec_phishing" = "Beware of phishing attacks";
+"sec_phishing_desc" = "Always verify you're on the correct website and downloading from official sources.";
+"sec_phishing_tip_1" = "Bookmark official sites";
+"sec_phishing_tip_2" = "Verify SSL certificates";
+"sec_phishing_tip_3" = "Don't click links from emails";
+"sec_phishing_tip_4" = "Download only from official sources";
+
+"sec_inheritance" = "Set up inheritance plan";
+"sec_inheritance_desc" = "Ensure your loved ones can access your Bitcoin if something happens to you.";
+"sec_inheritance_tip_1" = "Consider multisig with family member";
+"sec_inheritance_tip_2" = "Use services like Casa or Unchained";
+"sec_inheritance_tip_3" = "Write clear instructions";
+"sec_inheritance_tip_4" = "Store information securely";
+
+"sec_opsec" = "Practice operational security";
+"sec_opsec_desc" = "Don't reveal your holdings publicly. Be cautious about who knows you own Bitcoin.";
+"sec_opsec_tip_1" = "Don't post about holdings online";
+"sec_opsec_tip_2" = "Be vague about amounts";
+"sec_opsec_tip_3" = "Use different addresses for privacy";
+"sec_opsec_tip_4" = "Consider running your own node";
+
+"importance_critical" = "Critical";
+"importance_high" = "High";
+"importance_medium" = "Medium";
+
+// MARK: - Wallet Types
+"wallet_type_hardware" = "Hardware";
+"wallet_type_diy" = "DIY/Air-gapped";
+"wallet_type_software" = "Software";
+"wallet_type_multisig" = "Multi-sig";
+"wallet_type_hardware_desc" = "Dedicated devices that store your private keys offline";
+"wallet_type_diy_desc" = "Open-source, build-your-own hardware wallets for maximum security";
+"wallet_type_software_desc" = "Apps that give you full control of your keys";
+"wallet_type_multisig_desc" = "Multiple keys required for transactions - ultimate security";
+
+// MARK: - Wallet List
+"wallets_nav_title" = "Wallets";
+"legend" = "Legend";
+"open_source" = "Open Source";
+"bitcoin_only" = "Bitcoin Only";
+"features" = "Features";
+"pros" = "Pros";
+"cons" = "Cons";
+"visit_website" = "Visit Official Website";
+
+// MARK: - Quote Card
+"bitcoin_wisdom" = "Bitcoin Wisdom";
+"quote_of_the_day" = "Quote of the Day";
+"share_quote" = "Share Quote";
+
+// MARK: - Hyperinflation Card
+"fiat_graveyard" = "Fiat Currency Graveyard";
+"btc_forever" = "21 million. Forever. ₿";
+"tap_for_details" = "Tap for details";
+"crisis" = "Crisis";
+"severe" = "Severe";
+"high" = "High";
+"total" = "Total";
+"source" = "Source";
+"fiat_failures" = "Fiat Failures";
+"currency_destruction" = "Currency Destruction";
+"countries_high_inflation" = "%d countries currently experiencing >15%% inflation";
+"crisis_level" = "Crisis Level (>100%%)";
+"severe_level" = "Severe (50-100%%)";
+"high_level" = "High (15-50%%)";
+"countries" = "countries";
+"historical_events" = "%d major hyperinflation events in history";
+"worst_hyperinflations" = "Worst Hyperinflations in History";
+"bitcoin_the_exit" = "Bitcoin: The Exit";
+"fixed_supply" = "Fixed supply: 21 million max, ever";
+"no_central_bank" = "No central bank can print more";
+"transparent_policy" = "Transparent monetary policy";
+"borderless_escape" = "Borderless: escape capital controls";
+"self_custody_bank" = "Self-custody: be your own bank";
+"adoption_highest" = "Bitcoin adoption is highest in countries with:";
+"high_inflation" = "High inflation";
+"capital_controls" = "Capital controls";
+"currency_crises" = "Currency crises";
+"data_from" = "Data from %@";
+"consumer_price_inflation" = "Consumer price inflation (annual %%). Last updated: %@";
+"historical" = "Historical";
+"current" = "Current";

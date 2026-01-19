@@ -8,47 +8,36 @@
 import SwiftUI
 
 struct MarketDataView: View {
+    @ObservedObject private var localizationManager = LocalizationManager.shared
     @StateObject private var viewModel = MarketDataViewModel()
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
-                // Tab selector
-                tabSelector
-                
-                // Content
-                ScrollView {
-                    VStack(spacing: 16) {
-                        switch viewModel.selectedTab {
-                        case .mining:
-                            MiningCostView(
-                                miningData: viewModel.miningData, 
-                                currentBTCPrice: viewModel.currentBTCPrice,
-                                isRealData: viewModel.isMiningDataReal,
-                                miningSettings: viewModel.miningSettings,
-                                onSettingsChanged: { newSettings in
-                                    viewModel.updateMiningSettings(newSettings)
-                                }
-                            )
-                            
-                        case .exchanges:
-                            ExchangeReserveView(exchangeData: viewModel.exchangeData)
+            ScrollView {
+                VStack(spacing: 16) {
+                    MiningCostView(
+                        miningData: viewModel.miningData, 
+                        currentBTCPrice: viewModel.currentBTCPrice,
+                        isRealData: viewModel.isMiningDataReal,
+                        miningSettings: viewModel.miningSettings,
+                        onSettingsChanged: { newSettings in
+                            viewModel.updateMiningSettings(newSettings)
                         }
-                        
-                        if let error = viewModel.error {
-                            errorBanner(error)
-                        }
-                        
-                        // Last refresh time
-                        if let lastRefresh = viewModel.lastRefresh {
-                            lastRefreshView(lastRefresh)
-                        }
+                    )
+                    
+                    if let error = viewModel.error {
+                        errorBanner(error)
                     }
-                    .padding()
+                    
+                    // Last refresh time
+                    if let lastRefresh = viewModel.lastRefresh {
+                        lastRefreshView(lastRefresh)
+                    }
                 }
+                .padding()
             }
             .background(AppColors.primaryBackground)
-            .navigationTitle("Market Data")
+            .navigationTitle(L10n.miningData)
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -73,39 +62,6 @@ struct MarketDataView: View {
         }
     }
     
-    // MARK: - Tab Selector
-    private var tabSelector: some View {
-        HStack(spacing: 0) {
-            ForEach(MarketDataTab.allCases, id: \.self) { tab in
-                Button {
-                    withAnimation(.quickSpring) {
-                        viewModel.selectedTab = tab
-                    }
-                } label: {
-                    VStack(spacing: 6) {
-                        Image(systemName: tab.icon)
-                            .font(.system(size: 18))
-                        
-                        Text(tab.rawValue)
-                            .font(.system(size: 11, weight: .medium))
-                    }
-                    .foregroundColor(viewModel.selectedTab == tab ? AppColors.bitcoinOrange : AppColors.secondaryText)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 12)
-                    .background(
-                        viewModel.selectedTab == tab ?
-                        AppColors.bitcoinOrange.opacity(0.1) :
-                        Color.clear
-                    )
-                }
-            }
-        }
-        .background(AppColors.cardBackground)
-        .cornerRadius(AppLayout.cornerRadius)
-        .padding(.horizontal)
-        .padding(.top, 8)
-    }
-    
     // MARK: - Error Banner
     private func errorBanner(_ message: String) -> some View {
         HStack(spacing: 8) {
@@ -124,7 +80,7 @@ struct MarketDataView: View {
                     await viewModel.refresh()
                 }
             } label: {
-                Text("Retry")
+                Text(L10n.retry)
                     .font(.system(size: 12, weight: .semibold))
                     .foregroundColor(AppColors.bitcoinOrange)
             }
@@ -140,7 +96,7 @@ struct MarketDataView: View {
             Spacer()
             Image(systemName: "clock")
                 .font(.system(size: 10))
-            Text("Last updated: \(date.timeAgo)")
+            Text("\(L10n.lastUpdated) \(date.timeAgo)")
                 .font(.system(size: 11))
             Spacer()
         }

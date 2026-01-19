@@ -22,7 +22,7 @@ struct QuoteCardView: View {
                     .font(.system(size: 16))
                     .foregroundColor(AppColors.bitcoinOrange)
                 
-                Text("Bitcoin Wisdom")
+                Text(L10n.bitcoinWisdom)
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(AppColors.primaryText)
                 
@@ -154,7 +154,7 @@ struct QuoteOfTheDayBanner: View {
                     .foregroundColor(AppColors.neutralYellow)
                 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Quote of the Day")
+                    Text(L10n.quoteOfTheDay)
                         .font(.system(size: 10, weight: .semibold))
                         .foregroundColor(AppColors.neutralYellow)
                     
@@ -242,7 +242,7 @@ struct QuoteDetailSheet: View {
             ShareLink(item: "\"\(quote.quote)\" — \(quote.author)") {
                 HStack {
                     Image(systemName: "square.and.arrow.up")
-                    Text("Share Quote")
+                    Text(L10n.shareQuote)
                 }
                 .font(.system(size: 14, weight: .semibold))
                 .foregroundColor(AppColors.primaryText)

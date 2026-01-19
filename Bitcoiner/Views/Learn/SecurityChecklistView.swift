@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SecurityChecklistView: View {
-    @State private var checkItems: [SecurityCheckItem] = SecurityCheckItem.allItems
+    @ObservedObject private var localizationManager = LocalizationManager.shared
+    @State private var checkItems: [SecurityCheckItem] = SecurityCheckItem.localizedItems
     @State private var selectedItem: SecurityCheckItem?
     
     private var completedCount: Int {
@@ -43,7 +44,7 @@ struct SecurityChecklistView: View {
                 // Reset Button
                 if completedCount > 0 {
                     Button(action: resetChecklist) {
-                        Text("Reset Checklist")
+                        Text(L10n.resetChecklist)
                             .font(.system(size: 14, weight: .medium))
                             .foregroundColor(AppColors.lossRed)
                     }
@@ -53,7 +54,7 @@ struct SecurityChecklistView: View {
             .padding()
         }
         .background(AppColors.primaryBackground)
-        .navigationTitle("Security Checklist")
+        .navigationTitle(L10n.securityNavTitle)
         .navigationBarTitleDisplayMode(.inline)
         .sheet(item: $selectedItem) { item in
             SecurityItemDetailSheet(item: item)
@@ -64,11 +65,11 @@ struct SecurityChecklistView: View {
         VStack(spacing: 16) {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Your Progress")
+                    Text(L10n.yourProgress)
                         .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(AppColors.primaryText)
                     
-                    Text("\(completedCount) of \(checkItems.count) completed")
+                    Text("\(completedCount) \(String(format: L10n.ofCompleted, checkItems.count))")
                         .font(.system(size: 13))
                         .foregroundColor(AppColors.secondaryText)
                 }
@@ -130,11 +131,11 @@ struct SecurityChecklistView: View {
     
     private var statusMessage: String {
         switch progress {
-        case 0: return "Start securing your Bitcoin!"
-        case 0..<0.33: return "Good start! Keep going."
-        case 0.33..<0.66: return "Making progress! Almost there."
-        case 0.66..<1.0: return "Great job! Just a few more steps."
-        default: return "Excellent! Your Bitcoin is well secured!"
+        case 0: return L10n.statusStart
+        case 0..<0.33: return L10n.statusGoodStart
+        case 0.33..<0.66: return L10n.statusProgress
+        case 0.66..<1.0: return L10n.statusGreat
+        default: return L10n.statusExcellent
         }
     }
     
@@ -179,7 +180,7 @@ struct SecurityCheckCard: View {
                             .foregroundColor(item.isCompleted ? AppColors.secondaryText : AppColors.primaryText)
                             .strikethrough(item.isCompleted)
                         
-                        Text(item.importance.rawValue)
+                        Text(item.importance.localizedName)
                             .font(.system(size: 9, weight: .bold))
                             .foregroundColor(importanceColor)
                             .padding(.horizontal, 6)
@@ -239,7 +240,7 @@ struct SecurityItemDetailSheet: View {
                             .foregroundColor(AppColors.primaryText)
                             .multilineTextAlignment(.center)
                         
-                        Text(item.importance.rawValue)
+                        Text(item.importance.localizedName)
                             .font(.system(size: 12, weight: .bold))
                             .foregroundColor(importanceColor)
                             .padding(.horizontal, 12)
@@ -251,7 +252,7 @@ struct SecurityItemDetailSheet: View {
                     
                     // Description
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Why This Matters")
+                        Text(L10n.whyThisMatters)
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(AppColors.primaryText)
                         
@@ -267,7 +268,7 @@ struct SecurityItemDetailSheet: View {
                     
                     // Tips
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Tips")
+                        Text(L10n.tips)
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(AppColors.primaryText)
                         
@@ -296,7 +297,7 @@ struct SecurityItemDetailSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
+                    Button(L10n.done) {
                         dismiss()
                     }
                     .foregroundColor(AppColors.bitcoinOrange)

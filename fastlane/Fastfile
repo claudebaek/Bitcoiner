@@ -21,34 +21,51 @@ platform :ios do
       build_number: Time.now.strftime("%Y%m%d%H%M")
     )
     
-    # Use provisioning profile name from environment (already installed)
-    profile_name = ENV["PROVISIONING_PROFILE_NAME"]
+    # Create Bundle ID if not exists using App Store Connect API
+    begin
+      require 'spaceship'
+      Spaceship::ConnectAPI.token = Spaceship::ConnectAPI::Token.create(
+        key_id: api_key[:key_id],
+        issuer_id: api_key[:issuer_id],
+        key: api_key[:key]
+      )
+      
+      bundle_id = Spaceship::ConnectAPI::BundleId.find("leejay100.Bitcoiner")
+      unless bundle_id
+        UI.message("Creating new Bundle ID: leejay100.Bitcoiner")
+        Spaceship::ConnectAPI::BundleId.create(
+          name: "Bitcoiner",
+          identifier: "leejay100.Bitcoiner",
+          platform: Spaceship::ConnectAPI::BundleIdPlatform::IOS
+        )
+        UI.success("Bundle ID created successfully!")
+      else
+        UI.message("Bundle ID already exists")
+      end
+    rescue => e
+      UI.important("Bundle ID creation note: #{e.message}")
+    end
     
-    UI.message("Using profile: #{profile_name}")
+    # Get certificates
+    get_certificates(
+      api_key: api_key
+    )
     
-    # Build the app with manual code signing
-    archive_path = File.expand_path("../build/Bitcoiner.xcarchive")
+    # Get provisioning profile (will create if needed)
+    get_provisioning_profile(
+      api_key: api_key,
+      app_identifier: "leejay100.Bitcoiner",
+      readonly: false
+    )
     
+    # Build the app
     gym(
       scheme: "Bitcoiner",
       project: "Bitcoiner.xcodeproj",
       output_directory: "./build",
       output_name: "Bitcoiner.ipa",
       export_method: "app-store",
-      clean: true,
-      skip_profile_detection: true,
-      skip_package_dependencies_resolution: true,
-      archive_path: archive_path,
-      sdk: "iphoneos18.2",
-      codesigning_identity: "Apple Distribution",
-      xcargs: "CODE_SIGN_STYLE=Manual PROVISIONING_PROFILE_SPECIFIER='#{profile_name}' DEVELOPMENT_TEAM=96FPVL6LQJ",
-      export_options: {
-        signingStyle: "manual",
-        teamID: "96FPVL6LQJ",
-        provisioningProfiles: {
-          "leejay100.Bitcoiner" => profile_name
-        }
-      }
+      clean: true
     )
     
     # Upload to TestFlight

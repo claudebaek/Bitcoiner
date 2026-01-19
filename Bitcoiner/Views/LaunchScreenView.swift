@@ -14,6 +14,9 @@ struct LaunchScreenView: View {
     @State private var glowOpacity: Double = 0
     @State private var ringScale: CGFloat = 0.8
     @State private var ringRotation: Double = 0
+    @State private var quoteOpacity: Double = 0
+    
+    private let quote = BitcoinQuote.random
     
     var body: some View {
         ZStack {
@@ -106,6 +109,23 @@ struct LaunchScreenView: View {
                 
                 Spacer()
                 
+                // Bitcoin Quote
+                VStack(spacing: 8) {
+                    Text("\"\(quote.quote)\"")
+                        .font(.system(size: 16, weight: .medium, design: .serif))
+                        .foregroundColor(AppColors.primaryText)
+                        .multilineTextAlignment(.center)
+                        .italic()
+                    
+                    Text("— \(quote.author)")
+                        .font(.system(size: 12, weight: .regular))
+                        .foregroundColor(AppColors.bitcoinOrange)
+                }
+                .padding(.horizontal, 40)
+                .opacity(quoteOpacity)
+                
+                Spacer()
+                
                 // Loading indicator
                 HStack(spacing: 8) {
                     ForEach(0..<3, id: \.self) { index in
@@ -155,6 +175,11 @@ struct LaunchScreenView: View {
         // Text fade in
         withAnimation(.easeOut(duration: 0.6).delay(0.5)) {
             textOpacity = 1.0
+        }
+        
+        // Quote fade in
+        withAnimation(.easeOut(duration: 0.8).delay(0.8)) {
+            quoteOpacity = 1.0
         }
     }
 }

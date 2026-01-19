@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DashboardView: View {
+    @ObservedObject private var localizationManager = LocalizationManager.shared
     @StateObject private var viewModel = DashboardViewModel()
     @State private var currentQuote = BitcoinQuote.quoteOfTheDay
     
@@ -77,7 +78,7 @@ struct DashboardView: View {
                 .padding()
             }
             .background(AppColors.primaryBackground)
-            .navigationTitle("Bitcoin")
+            .navigationTitle(L10n.dashboardTitle)
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -113,7 +114,7 @@ struct DashboardView: View {
                 .progressViewStyle(CircularProgressViewStyle(tint: AppColors.bitcoinOrange))
                 .scaleEffect(1.5)
             
-            Text("Loading Bitcoin data...")
+            Text(L10n.loadingData)
                 .font(.system(size: 14, weight: .medium))
                 .foregroundColor(AppColors.secondaryText)
         }
@@ -125,7 +126,7 @@ struct DashboardView: View {
     private var quickStatsSection: some View {
         VStack(spacing: 12) {
             HStack {
-                Text("Quick Stats")
+                Text(L10n.quickStats)
                     .font(.system(size: 16, weight: .bold))
                     .foregroundColor(AppColors.primaryText)
                 
@@ -137,16 +138,16 @@ struct DashboardView: View {
                 GridItem(.flexible())
             ], spacing: 12) {
                 StatCard(
-                    title: "Circulating Supply",
+                    title: L10n.circulatingSupply,
                     value: formatSupply(viewModel.bitcoinPrice.circulatingSupply),
-                    subtitle: "of 21M max",
+                    subtitle: L10n.ofMaxSupply,
                     icon: "circle.dotted",
                     iconColor: AppColors.bitcoinOrange
                 )
                 
                 StatCard(
-                    title: "Market Sentiment",
-                    value: viewModel.fearGreedIndex.classification.rawValue,
+                    title: L10n.marketSentiment,
+                    value: viewModel.fearGreedIndex.classification.localizedName,
                     icon: "brain.head.profile",
                     iconColor: viewModel.fearGreedIndex.classification.color
                 )
@@ -172,7 +173,7 @@ struct DashboardView: View {
                     await viewModel.refresh()
                 }
             } label: {
-                Text("Retry")
+                Text(L10n.retry)
                     .font(.system(size: 12, weight: .semibold))
                     .foregroundColor(AppColors.bitcoinOrange)
             }
@@ -188,7 +189,7 @@ struct DashboardView: View {
             Spacer()
             Image(systemName: "clock")
                 .font(.system(size: 10))
-            Text("Last updated: \(date.timeAgo)")
+            Text("\(L10n.lastUpdated) \(date.timeAgo)")
                 .font(.system(size: 11))
             Spacer()
         }

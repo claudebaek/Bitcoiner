@@ -8,41 +8,43 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @ObservedObject private var localizationManager = LocalizationManager.shared
     @State private var selectedTab: Tab = .dashboard
     
     var body: some View {
         TabView(selection: $selectedTab) {
             DashboardView()
                 .tabItem {
-                    Label(Tab.dashboard.title, systemImage: Tab.dashboard.icon)
+                    Label(L10n.tabDashboard, systemImage: Tab.dashboard.icon)
                 }
                 .tag(Tab.dashboard)
             
             MarketDataView()
                 .tabItem {
-                    Label(Tab.market.title, systemImage: Tab.market.icon)
+                    Label(L10n.tabMarket, systemImage: Tab.market.icon)
                 }
                 .tag(Tab.market)
             
             PositionView()
                 .tabItem {
-                    Label(Tab.positions.title, systemImage: Tab.positions.icon)
+                    Label(L10n.tabPositions, systemImage: Tab.positions.icon)
                 }
                 .tag(Tab.positions)
             
             LearnView()
                 .tabItem {
-                    Label(Tab.learn.title, systemImage: Tab.learn.icon)
+                    Label(L10n.tabLearn, systemImage: Tab.learn.icon)
                 }
                 .tag(Tab.learn)
             
             SettingsView()
                 .tabItem {
-                    Label(Tab.settings.title, systemImage: Tab.settings.icon)
+                    Label(L10n.tabSettings, systemImage: Tab.settings.icon)
                 }
                 .tag(Tab.settings)
         }
         .tint(AppColors.bitcoinOrange)
+        .id(localizationManager.currentLanguage) // Force refresh on language change
         .onAppear {
             configureTabBarAppearance()
         }
@@ -77,16 +79,6 @@ enum Tab: String, CaseIterable {
     case positions
     case learn
     case settings
-    
-    var title: String {
-        switch self {
-        case .dashboard: return "Dashboard"
-        case .market: return "Market"
-        case .positions: return "Positions"
-        case .learn: return "Learn"
-        case .settings: return "Settings"
-        }
-    }
     
     var icon: String {
         switch self {

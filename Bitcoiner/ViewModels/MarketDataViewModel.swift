@@ -11,13 +11,11 @@ import Combine
 @MainActor
 final class MarketDataViewModel: ObservableObject {
     // MARK: - Published Properties
-    @Published var exchangeData: ExchangeData = .placeholder
     @Published var miningData: MiningData = .placeholder
     @Published var currentBTCPrice: Double = 0
     @Published var isLoading = false
     @Published var error: String?
     @Published var lastRefresh: Date?
-    @Published var selectedTab: MarketDataTab = .mining
     @Published var miningSettings: MiningSettings = .default
     @Published var isMiningDataReal = false
     
@@ -55,21 +53,12 @@ final class MarketDataViewModel: ObservableObject {
         error = nil
         
         await withTaskGroup(of: Void.self) { group in
-            group.addTask { await self.fetchExchangeData() }
             group.addTask { await self.fetchBTCPrice() }
             group.addTask { await self.fetchMiningData() }
         }
         
         isLoading = false
         lastRefresh = Date()
-    }
-    
-    private func fetchExchangeData() async {
-        do {
-            exchangeData = try await coinGeckoService.fetchExchanges()
-        } catch {
-            self.error = error.localizedDescription
-        }
     }
     
     private func fetchBTCPrice() async {
@@ -145,20 +134,5 @@ final class MarketDataViewModel: ObservableObject {
     
     func applyMiningPreset(_ preset: MiningSettings) {
         updateMiningSettings(preset)
-    }
-}
-
-// MARK: - Market Data Tab
-enum MarketDataTab: String, CaseIterable {
-    case mining = "Mining"
-    case exchanges = "Exchanges"
-    
-    var icon: String {
-        switch self {
-        case .mining:
-            return "cpu"
-        case .exchanges:
-            return "building.columns"
-        }
     }
 }

@@ -63,6 +63,21 @@ enum FearGreedClassification: String, CaseIterable {
     case greed = "Greed"
     case extremeGreed = "Extreme Greed"
     
+    var localizedName: String {
+        switch self {
+        case .extremeFear:
+            return L10n.extremeFear
+        case .fear:
+            return L10n.fear
+        case .neutral:
+            return L10n.neutral
+        case .greed:
+            return L10n.greed
+        case .extremeGreed:
+            return L10n.extremeGreed
+        }
+    }
+    
     var color: Color {
         switch self {
         case .extremeFear:

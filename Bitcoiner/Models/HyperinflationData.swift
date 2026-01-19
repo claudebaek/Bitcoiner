@@ -12,6 +12,13 @@ import SwiftUI
 enum InflationCategory: String, CaseIterable {
     case historical = "Historical"
     case current = "Current"
+    
+    var localizedName: String {
+        switch self {
+        case .historical: return L10n.historical
+        case .current: return L10n.current
+        }
+    }
 }
 
 // MARK: - Inflation Severity Tier

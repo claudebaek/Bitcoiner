@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PositionView: View {
+    @ObservedObject private var localizationManager = LocalizationManager.shared
     @StateObject private var viewModel = PositionViewModel()
     
     var body: some View {
@@ -42,7 +43,7 @@ struct PositionView: View {
                 .padding()
             }
             .background(AppColors.primaryBackground)
-            .navigationTitle("Positions")
+            .navigationTitle(L10n.positionsTitle)
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -241,7 +242,7 @@ struct PositionView: View {
                     await viewModel.refresh()
                 }
             } label: {
-                Text("Retry")
+                Text(L10n.retry)
                     .font(.system(size: 12, weight: .semibold))
                     .foregroundColor(AppColors.bitcoinOrange)
             }
@@ -257,7 +258,7 @@ struct PositionView: View {
             Spacer()
             Image(systemName: "clock")
                 .font(.system(size: 10))
-            Text("Last updated: \(date.timeAgo)")
+            Text("\(L10n.lastUpdated) \(date.timeAgo)")
                 .font(.system(size: 11))
             Spacer()
         }

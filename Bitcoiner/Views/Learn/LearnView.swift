@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LearnView: View {
+    @ObservedObject private var localizationManager = LocalizationManager.shared
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -15,51 +17,90 @@ struct LearnView: View {
                     // Header
                     headerSection
                     
+                    // Bitcoin Principles Diagram
+                    NavigationLink(destination: BitcoinPrinciplesView()) {
+                        LearnCard(
+                            title: L10n.bitcoinPrinciples,
+                            subtitle: L10n.bitcoinPrinciplesSubtitle,
+                            icon: "bitcoinsign.circle.fill",
+                            iconColor: AppColors.bitcoinOrange,
+                            itemCount: 5,
+                            itemLabel: L10n.concepts
+                        )
+                    }
+                    
                     // Self-Custody Guide Card
                     NavigationLink(destination: SelfCustodyGuideView()) {
                         LearnCard(
-                            title: "Self-Custody Guide",
-                            subtitle: "Learn why and how to hold your own keys",
+                            title: L10n.selfCustodyGuide,
+                            subtitle: L10n.selfCustodySubtitle,
                             icon: "key.fill",
                             iconColor: AppColors.bitcoinOrange,
                             itemCount: GuideSection.allSections.count,
-                            itemLabel: "topics"
+                            itemLabel: L10n.topics
                         )
                     }
                     
                     // Wallet Recommendations Card
                     NavigationLink(destination: WalletListView()) {
                         LearnCard(
-                            title: "Wallet Recommendations",
-                            subtitle: "Hardware, software, and multisig options",
+                            title: L10n.walletRecommendations,
+                            subtitle: L10n.walletSubtitle,
                             icon: "wallet.pass.fill",
                             iconColor: AppColors.profitGreen,
                             itemCount: Wallet.allWallets.count,
-                            itemLabel: "wallets"
+                            itemLabel: L10n.wallets
                         )
                     }
                     
                     // Security Checklist Card
                     NavigationLink(destination: SecurityChecklistView()) {
                         LearnCard(
-                            title: "Security Checklist",
-                            subtitle: "Essential steps to protect your Bitcoin",
+                            title: L10n.securityChecklist,
+                            subtitle: L10n.securitySubtitle,
                             icon: "checkmark.shield.fill",
                             iconColor: AppColors.neutralYellow,
                             itemCount: SecurityCheckItem.allItems.count,
-                            itemLabel: "items"
+                            itemLabel: L10n.items
                         )
                     }
                     
                     // Korean Market Info Card
                     NavigationLink(destination: KoreanMarketInfoView()) {
                         LearnCard(
-                            title: "Korean Market Info",
-                            subtitle: "Exchanges, taxes, and regulations in Korea",
+                            title: L10n.koreanMarketInfo,
+                            subtitle: L10n.koreanMarketSubtitle,
                             icon: "wonsign.circle.fill",
                             iconColor: Color.blue,
                             itemCount: 3,
-                            itemLabel: "topics"
+                            itemLabel: L10n.topics
+                        )
+                    }
+                    
+                    // Divider
+                    dividerSection
+                    
+                    // Bitcoin Books Card
+                    NavigationLink(destination: BookListView()) {
+                        LearnCard(
+                            title: L10n.bitcoinBooks,
+                            subtitle: L10n.booksSubtitle,
+                            icon: "books.vertical.fill",
+                            iconColor: AppColors.profitGreen,
+                            itemCount: BitcoinBook.allBooks.count,
+                            itemLabel: L10n.books
+                        )
+                    }
+                    
+                    // YouTube Channels Card
+                    NavigationLink(destination: YouTuberListView()) {
+                        LearnCard(
+                            title: L10n.youtubeChannels,
+                            subtitle: L10n.youtubeSubtitle,
+                            icon: "play.rectangle.fill",
+                            iconColor: AppColors.lossRed,
+                            itemCount: BitcoinYouTuber.allYouTubers.count,
+                            itemLabel: L10n.channels
                         )
                     }
                     
@@ -69,7 +110,7 @@ struct LearnView: View {
                 .padding()
             }
             .background(AppColors.primaryBackground)
-            .navigationTitle("Learn")
+            .navigationTitle(L10n.learnTitle)
             .navigationBarTitleDisplayMode(.large)
         }
     }
@@ -80,15 +121,27 @@ struct LearnView: View {
                 .font(.system(size: 48))
                 .foregroundColor(AppColors.bitcoinOrange)
             
-            Text("Bitcoin Self-Custody")
+            Text(L10n.selfCustodyHeader)
                 .font(.system(size: 24, weight: .bold))
                 .foregroundColor(AppColors.primaryText)
             
-            Text("Not your keys, not your coins")
+            Text(L10n.notYourKeys)
                 .font(.system(size: 14))
                 .foregroundColor(AppColors.secondaryText)
         }
         .padding(.vertical, 24)
+    }
+    
+    private var dividerSection: some View {
+        HStack {
+            VStack { Divider().background(AppColors.tertiaryText) }
+            Text(L10n.education)
+                .font(.system(size: 12, weight: .medium))
+                .foregroundColor(AppColors.tertiaryText)
+                .padding(.horizontal, 8)
+            VStack { Divider().background(AppColors.tertiaryText) }
+        }
+        .padding(.vertical, 8)
     }
     
     private var quoteSection: some View {
@@ -164,7 +217,7 @@ struct KoreanMarketInfoView: View {
             VStack(spacing: 16) {
                 // Exchange Info
                 InfoCard(
-                    title: "Korean Exchanges",
+                    title: L10n.koreanExchanges,
                     icon: "building.columns.fill",
                     iconColor: AppColors.bitcoinOrange,
                     content: KoreanMarketInfo.exchangeInfo
@@ -172,7 +225,7 @@ struct KoreanMarketInfoView: View {
                 
                 // Tax Info
                 InfoCard(
-                    title: "Crypto Tax in Korea",
+                    title: L10n.cryptoTaxKorea,
                     icon: "wonsign.circle.fill",
                     iconColor: AppColors.lossRed,
                     content: KoreanMarketInfo.taxInfo
@@ -180,14 +233,14 @@ struct KoreanMarketInfoView: View {
                 
                 // Travel Rule
                 InfoCard(
-                    title: "Travel Rule",
+                    title: L10n.travelRule,
                     icon: "airplane.circle.fill",
                     iconColor: AppColors.neutralYellow,
                     content: KoreanMarketInfo.travelRuleInfo
                 )
                 
                 // Disclaimer
-                Text("This information is for educational purposes only. Consult a tax professional for specific advice.")
+                Text(L10n.taxDisclaimer)
                     .font(.system(size: 11))
                     .foregroundColor(AppColors.tertiaryText)
                     .multilineTextAlignment(.center)
@@ -196,7 +249,7 @@ struct KoreanMarketInfoView: View {
             .padding()
         }
         .background(AppColors.primaryBackground)
-        .navigationTitle("Korean Market")
+        .navigationTitle(L10n.koreanMarketInfo)
         .navigationBarTitleDisplayMode(.inline)
     }
 }

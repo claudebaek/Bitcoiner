@@ -22,7 +22,7 @@ struct HyperinflationCardView: View {
                     .font(.system(size: 18))
                     .foregroundColor(AppColors.lossRed)
                 
-                Text("Fiat Currency Graveyard")
+                Text(L10n.fiatGraveyard)
                     .font(.system(size: 16, weight: .bold))
                     .foregroundColor(AppColors.primaryText)
                 
@@ -40,7 +40,7 @@ struct HyperinflationCardView: View {
             // Category Picker
             Picker("Category", selection: $selectedCategory) {
                 ForEach(InflationCategory.allCases, id: \.self) { category in
-                    Text(category.rawValue).tag(category)
+                    Text(category.localizedName).tag(category)
                 }
             }
             .pickerStyle(.segmented)
@@ -64,7 +64,7 @@ struct HyperinflationCardView: View {
             // Bitcoin message
             HStack {
                 Spacer()
-                Text("21 million. Forever. ₿")
+                Text(L10n.btcForever)
                     .font(.system(size: 12, weight: .semibold))
                     .foregroundColor(AppColors.bitcoinOrange)
                 Spacer()
@@ -74,7 +74,7 @@ struct HyperinflationCardView: View {
             // Bottom hint
             HStack {
                 Spacer()
-                Text("Tap for details")
+                Text(L10n.tapForDetails)
                     .font(.system(size: 10))
                     .foregroundColor(AppColors.tertiaryText)
                 Image(systemName: "chevron.right")
@@ -119,7 +119,7 @@ struct HyperinflationCardView: View {
             HStack(spacing: 0) {
                 StatMiniBox(
                     value: "\(currentStats.crisis)",
-                    label: "Crisis",
+                    label: L10n.crisis,
                     color: .red
                 )
                 
@@ -129,7 +129,7 @@ struct HyperinflationCardView: View {
                 
                 StatMiniBox(
                     value: "\(currentStats.severe)",
-                    label: "Severe",
+                    label: L10n.severe,
                     color: .orange
                 )
                 
@@ -139,7 +139,7 @@ struct HyperinflationCardView: View {
                 
                 StatMiniBox(
                     value: "\(currentStats.high)",
-                    label: "High",
+                    label: L10n.high,
                     color: .yellow
                 )
                 
@@ -149,7 +149,7 @@ struct HyperinflationCardView: View {
                 
                 StatMiniBox(
                     value: "\(currentStats.total)",
-                    label: "Total",
+                    label: L10n.total,
                     color: AppColors.secondaryText
                 )
             }
@@ -160,7 +160,7 @@ struct HyperinflationCardView: View {
                     .font(.system(size: 9))
                     .foregroundColor(inflationData.source == .api ? AppColors.profitGreen : AppColors.tertiaryText)
                 
-                Text("Source: \(inflationData.sourceDescription)")
+                Text("\(L10n.source): \(inflationData.sourceDescription)")
                     .font(.system(size: 9))
                     .foregroundColor(AppColors.tertiaryText)
             }
@@ -177,7 +177,7 @@ struct HyperinflationCardView: View {
                 .font(.system(size: 12))
                 .foregroundColor(AppColors.tertiaryText)
             
-            Text("\(HyperinflationStats.historicalCount) major hyperinflation events in history")
+            Text(String(format: L10n.historicalEvents, HyperinflationStats.historicalCount))
                 .font(.system(size: 11))
                 .foregroundColor(AppColors.secondaryText)
             
@@ -277,7 +277,7 @@ struct HyperinflationDetailSheet: View {
                     // Category Picker
                     Picker("Category", selection: $selectedCategory) {
                         ForEach(InflationCategory.allCases, id: \.self) { category in
-                            Text(category.rawValue).tag(category)
+                            Text(category.localizedName).tag(category)
                         }
                     }
                     .pickerStyle(.segmented)
@@ -295,11 +295,11 @@ struct HyperinflationDetailSheet: View {
                     
                     // Disclaimer with source
                     VStack(spacing: 4) {
-                        Text("Data from \(inflationData.sourceDescription)")
+                        Text(String(format: L10n.dataFrom, inflationData.sourceDescription))
                             .font(.system(size: 10, weight: .medium))
                             .foregroundColor(inflationData.source == .api ? AppColors.profitGreen : AppColors.tertiaryText)
                         
-                        Text("Consumer price inflation (annual %). Last updated: \(inflationData.lastUpdated?.formatted(date: .abbreviated, time: .omitted) ?? "N/A")")
+                        Text(String(format: L10n.consumerPriceInflation, inflationData.lastUpdated?.formatted(date: .abbreviated, time: .omitted) ?? "N/A"))
                             .font(.system(size: 10))
                             .foregroundColor(AppColors.tertiaryText)
                             .multilineTextAlignment(.center)
@@ -309,11 +309,11 @@ struct HyperinflationDetailSheet: View {
                 .padding()
             }
             .background(AppColors.primaryBackground)
-            .navigationTitle("Fiat Failures")
+            .navigationTitle(L10n.fiatFailures)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
+                    Button(L10n.done) {
                         dismiss()
                     }
                     .foregroundColor(AppColors.bitcoinOrange)
@@ -329,11 +329,11 @@ struct HyperinflationDetailSheet: View {
                 .font(.system(size: 40))
                 .foregroundColor(AppColors.lossRed)
             
-            Text("Currency Destruction")
+            Text(L10n.currencyDestruction)
                 .font(.system(size: 20, weight: .bold))
                 .foregroundColor(AppColors.primaryText)
             
-            Text("\(totalCountries) countries currently experiencing >15% inflation")
+            Text(String(format: L10n.countriesHighInflation, totalCountries))
                 .font(.system(size: 14))
                 .foregroundColor(AppColors.secondaryText)
                 .multilineTextAlignment(.center)
@@ -346,17 +346,17 @@ struct HyperinflationDetailSheet: View {
         VStack(spacing: 16) {
             // Crisis Tier
             if let crisisCases = currentByTier[.crisis], !crisisCases.isEmpty {
-                TierSection(title: "Crisis Level (>100%)", tier: .crisis, cases: crisisCases)
+                TierSection(title: L10n.crisisLevel, tier: .crisis, cases: crisisCases)
             }
             
             // Severe Tier
             if let severeCases = currentByTier[.severe], !severeCases.isEmpty {
-                TierSection(title: "Severe (50-100%)", tier: .severe, cases: severeCases)
+                TierSection(title: L10n.severeLevel, tier: .severe, cases: severeCases)
             }
             
             // High Tier
             if let highCases = currentByTier[.high], !highCases.isEmpty {
-                TierSection(title: "High (15-50%)", tier: .high, cases: highCases)
+                TierSection(title: L10n.highLevel, tier: .high, cases: highCases)
             }
         }
     }
@@ -365,7 +365,7 @@ struct HyperinflationDetailSheet: View {
     private var historicalCasesSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Text("Worst Hyperinflations in History")
+                Text(L10n.worstHyperinflations)
                     .font(.system(size: 16, weight: .bold))
                     .foregroundColor(AppColors.primaryText)
                 Spacer()
@@ -388,7 +388,7 @@ struct HyperinflationDetailSheet: View {
                     .font(.system(size: 20))
                     .foregroundColor(AppColors.bitcoinOrange)
                 
-                Text("Bitcoin: The Exit")
+                Text(L10n.bitcoinTheExit)
                     .font(.system(size: 16, weight: .bold))
                     .foregroundColor(AppColors.primaryText)
                 
@@ -396,23 +396,23 @@ struct HyperinflationDetailSheet: View {
             }
             
             VStack(alignment: .leading, spacing: 8) {
-                CheckmarkBulletPoint(text: "Fixed supply: 21 million max, ever")
-                CheckmarkBulletPoint(text: "No central bank can print more")
-                CheckmarkBulletPoint(text: "Transparent monetary policy")
-                CheckmarkBulletPoint(text: "Borderless: escape capital controls")
-                CheckmarkBulletPoint(text: "Self-custody: be your own bank")
+                CheckmarkBulletPoint(text: L10n.fixedSupply)
+                CheckmarkBulletPoint(text: L10n.noCentralBank)
+                CheckmarkBulletPoint(text: L10n.transparentPolicy)
+                CheckmarkBulletPoint(text: L10n.borderlessEscape)
+                CheckmarkBulletPoint(text: L10n.selfCustodyBank)
             }
             
             // Adoption in high-inflation countries
             VStack(alignment: .leading, spacing: 8) {
-                Text("Bitcoin adoption is highest in countries with:")
+                Text(L10n.adoptionHighest)
                     .font(.system(size: 12, weight: .medium))
                     .foregroundColor(AppColors.secondaryText)
                 
                 HStack(spacing: 8) {
-                    AdoptionTag(text: "High inflation")
-                    AdoptionTag(text: "Capital controls")
-                    AdoptionTag(text: "Currency crises")
+                    AdoptionTag(text: L10n.highInflation)
+                    AdoptionTag(text: L10n.capitalControls)
+                    AdoptionTag(text: L10n.currencyCrises)
                 }
             }
             .padding(.top, 8)
@@ -442,7 +442,7 @@ struct TierSection: View {
                 
                 Spacer()
                 
-                Text("\(cases.count) countries")
+                Text("\(cases.count) \(L10n.countries)")
                     .font(.system(size: 11))
                     .foregroundColor(AppColors.tertiaryText)
             }
