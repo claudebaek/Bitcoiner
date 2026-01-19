@@ -20,9 +20,6 @@ struct MarketDataView: View {
                 ScrollView {
                     VStack(spacing: 16) {
                         switch viewModel.selectedTab {
-                        case .etf:
-                            ETFFlowView(etfData: viewModel.etfData)
-                            
                         case .mining:
                             MiningCostView(
                                 miningData: viewModel.miningData, 
@@ -36,9 +33,6 @@ struct MarketDataView: View {
                             
                         case .exchanges:
                             ExchangeReserveView(exchangeData: viewModel.exchangeData)
-                            
-                        case .liquidations:
-                            LiquidationMapView(liquidationData: viewModel.liquidationData)
                         }
                         
                         if let error = viewModel.error {

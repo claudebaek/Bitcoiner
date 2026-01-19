@@ -29,11 +29,11 @@ enum AppConstants {
         static let fearGreedHistory = "\(fearGreedBase)/?limit=7"
         
         // Binance Futures Endpoints
-        static func longShortRatio(symbol: String = "BTCUSDT", period: String = "5m", limit: Int = 30) -> String {
+        static func longShortRatio(symbol: String = "BTCUSDT", period: String, limit: Int = 30) -> String {
             "\(binanceFuturesBase)/globalLongShortAccountRatio?symbol=\(symbol)&period=\(period)&limit=\(limit)"
         }
         
-        static func topTraderLongShortRatio(symbol: String = "BTCUSDT", period: String = "5m", limit: Int = 30) -> String {
+        static func topTraderLongShortRatio(symbol: String = "BTCUSDT", period: String, limit: Int = 30) -> String {
             "\(binanceFuturesBase)/topLongShortAccountRatio?symbol=\(symbol)&period=\(period)&limit=\(limit)"
         }
         
@@ -47,6 +47,15 @@ enum AppConstants {
         static let mempoolHashrate = "\(mempoolBase)/mining/hashrate/1m"
         static let mempoolHashrate3d = "\(mempoolBase)/mining/hashrate/3d"
         static let mempoolBlocks = "\(mempoolBase)/blocks"
+        
+        // US Treasury Fiscal Data Endpoints
+        static let treasuryBase = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2"
+        static let debtToPenny = "\(treasuryBase)/accounting/od/debt_to_penny"
+        
+        /// Get latest US debt data with optional record limit
+        static func usDebt(limit: Int = 2) -> String {
+            "\(debtToPenny)?fields=record_date,tot_pub_debt_out_amt,debt_held_public_amt,intragov_hold_amt&sort=-record_date&page[size]=\(limit)"
+        }
     }
     
     // MARK: - Refresh Intervals (in seconds)

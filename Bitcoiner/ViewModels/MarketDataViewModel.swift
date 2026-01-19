@@ -12,31 +12,26 @@ import Combine
 final class MarketDataViewModel: ObservableObject {
     // MARK: - Published Properties
     @Published var exchangeData: ExchangeData = .placeholder
-    @Published var liquidationData: LiquidationData = .placeholder
-    @Published var etfData: ETFData = .placeholder
     @Published var miningData: MiningData = .placeholder
     @Published var currentBTCPrice: Double = 0
     @Published var isLoading = false
     @Published var error: String?
     @Published var lastRefresh: Date?
-    @Published var selectedTab: MarketDataTab = .etf
+    @Published var selectedTab: MarketDataTab = .mining
     @Published var miningSettings: MiningSettings = .default
     @Published var isMiningDataReal = false
     
     // MARK: - Private Properties
     private let coinGeckoService: CoinGeckoService
-    private let binanceService: BinanceService
     private let miningService: MiningService
     private let settingsManager: MiningSettingsManager
     private var refreshTask: Task<Void, Never>?
     
     // MARK: - Initialization
     init(coinGeckoService: CoinGeckoService = .shared,
-         binanceService: BinanceService = .shared,
          miningService: MiningService = .shared,
          settingsManager: MiningSettingsManager = .shared) {
         self.coinGeckoService = coinGeckoService
-        self.binanceService = binanceService
         self.miningService = miningService
         self.settingsManager = settingsManager
         self.miningSettings = settingsManager.settings
@@ -61,9 +56,7 @@ final class MarketDataViewModel: ObservableObject {
         
         await withTaskGroup(of: Void.self) { group in
             group.addTask { await self.fetchExchangeData() }
-            group.addTask { await self.fetchLiquidationData() }
             group.addTask { await self.fetchBTCPrice() }
-            group.addTask { await self.fetchETFData() }
             group.addTask { await self.fetchMiningData() }
         }
         
@@ -79,16 +72,6 @@ final class MarketDataViewModel: ObservableObject {
         }
     }
     
-    private func fetchLiquidationData() async {
-        do {
-            liquidationData = try await binanceService.fetchLiquidationData()
-        } catch {
-            if self.error == nil {
-                self.error = error.localizedDescription
-            }
-        }
-    }
-    
     private func fetchBTCPrice() async {
         do {
             let priceData = try await coinGeckoService.fetchBitcoinPrice()
@@ -97,12 +80,6 @@ final class MarketDataViewModel: ObservableObject {
             // Use default price if fetch fails
             currentBTCPrice = 98000
         }
-    }
-    
-    private func fetchETFData() async {
-        // Note: Real ETF data would require a premium API (e.g., SoSoValue, Farside)
-        // Using sample data for demonstration
-        etfData = ETFData.sampleData
     }
     
     private func fetchMiningData() async {
@@ -173,21 +150,15 @@ final class MarketDataViewModel: ObservableObject {
 
 // MARK: - Market Data Tab
 enum MarketDataTab: String, CaseIterable {
-    case etf = "ETF"
     case mining = "Mining"
     case exchanges = "Exchanges"
-    case liquidations = "Liquidations"
     
     var icon: String {
         switch self {
-        case .etf:
-            return "chart.line.uptrend.xyaxis"
         case .mining:
             return "cpu"
         case .exchanges:
             return "building.columns"
-        case .liquidations:
-            return "flame"
         }
     }
 }

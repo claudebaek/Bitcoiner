@@ -8,8 +8,7 @@
 import Foundation
 
 protocol BinanceServiceProtocol {
-    func fetchLongShortRatio() async throws -> PositionData
-    func fetchLiquidationData() async throws -> LiquidationData
+    func fetchLongShortRatio(period: String) async throws -> PositionData
 }
 
 final class BinanceService: BinanceServiceProtocol {
@@ -22,29 +21,18 @@ final class BinanceService: BinanceServiceProtocol {
     }
     
     // MARK: - Fetch Long/Short Ratio
-    func fetchLongShortRatio() async throws -> PositionData {
+    func fetchLongShortRatio(period: String = "5m") async throws -> PositionData {
         async let globalRatioTask: [BinanceLongShortRatioResponse] = apiService.fetch(
-            from: AppConstants.API.longShortRatio()
+            from: AppConstants.API.longShortRatio(period: period)
         )
         
         async let topTraderRatioTask: [BinanceTopTraderPositionResponse] = apiService.fetch(
-            from: AppConstants.API.topTraderLongShortRatio()
+            from: AppConstants.API.topTraderLongShortRatio(period: period)
         )
         
         let (globalRatio, topTraderRatio) = try await (globalRatioTask, topTraderRatioTask)
         
         return mapToPositionData(globalRatio: globalRatio, topTraderRatio: topTraderRatio)
-    }
-    
-    // MARK: - Fetch Liquidation Data
-    func fetchLiquidationData() async throws -> LiquidationData {
-        // Note: Full liquidation data requires Coinglass API
-        // Using Binance data to approximate
-        let response: [BinanceLongShortRatioResponse] = try await apiService.fetch(
-            from: AppConstants.API.topTraderPositionRatio()
-        )
-        
-        return mapToLiquidationData(response)
     }
     
     // MARK: - Mapping Functions
@@ -88,57 +76,5 @@ final class BinanceService: BinanceServiceProtocol {
             historicalData: Array(historicalData),
             lastUpdated: Date()
         )
-    }
-    
-    private func mapToLiquidationData(_ response: [BinanceLongShortRatioResponse]) -> LiquidationData {
-        // Note: This is approximated data
-        // Real liquidation data requires Coinglass or similar premium API
-        
-        guard let latest = response.first else {
-            return .placeholder
-        }
-        
-        let longRatio = Double(latest.longAccount) ?? 0.5
-        let shortRatio = Double(latest.shortAccount) ?? 0.5
-        
-        // Simulated liquidation values based on ratio imbalance
-        // In production, this would come from actual liquidation API
-        let baseLiquidations = 50_000_000.0 // $50M base
-        let longLiquidations = baseLiquidations * (1 - longRatio)
-        let shortLiquidations = baseLiquidations * (1 - shortRatio)
-        
-        // Generate sample heatmap data
-        let heatmapData = generateSampleHeatmapData()
-        
-        return LiquidationData(
-            totalLiquidations24h: longLiquidations + shortLiquidations,
-            longLiquidations: longLiquidations,
-            shortLiquidations: shortLiquidations,
-            largestLiquidation: nil,
-            recentLiquidations: [],
-            heatmapData: heatmapData,
-            lastUpdated: Date()
-        )
-    }
-    
-    private func generateSampleHeatmapData() -> [LiquidationHeatmapPoint] {
-        // Generate sample heatmap points
-        // In production, this would come from actual data
-        var points: [LiquidationHeatmapPoint] = []
-        let basePrice = 100000.0 // Approximate BTC price
-        
-        for i in -5...5 {
-            let priceLevel = basePrice + Double(i * 1000)
-            let longLiq = Double.random(in: 0...5_000_000)
-            let shortLiq = Double.random(in: 0...5_000_000)
-            
-            points.append(LiquidationHeatmapPoint(
-                priceLevel: priceLevel,
-                longLiquidations: longLiq,
-                shortLiquidations: shortLiq
-            ))
-        }
-        
-        return points
     }
 }

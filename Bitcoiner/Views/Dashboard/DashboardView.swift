@@ -48,6 +48,15 @@ struct DashboardView: View {
                             marketData: viewModel.marketData
                         )
                         
+                        // US Debt & Dollar Purchasing Power
+                        DebtCounterView(
+                            debtData: viewModel.debtData,
+                            currentBtcPrice: viewModel.bitcoinPrice.price
+                        )
+                        
+                        // Hyperinflation Nations
+                        HyperinflationCardView(inflationData: viewModel.inflationData)
+                        
                         // Bitcoin Quote
                         QuoteCardView(quote: currentQuote, showRefreshButton: true) {
                             withAnimation(.easeInOut(duration: 0.3)) {

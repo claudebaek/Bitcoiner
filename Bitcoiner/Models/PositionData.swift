@@ -7,6 +7,30 @@
 
 import Foundation
 
+// MARK: - Position Side
+enum PositionSide: String, Codable {
+    case long = "LONG"
+    case short = "SHORT"
+    
+    var color: String {
+        switch self {
+        case .long:
+            return "00C853" // Green
+        case .short:
+            return "FF5252" // Red
+        }
+    }
+    
+    var icon: String {
+        switch self {
+        case .long:
+            return "arrow.up.right"
+        case .short:
+            return "arrow.down.right"
+        }
+    }
+}
+
 // MARK: - Binance Long/Short Ratio Response
 struct BinanceLongShortRatioResponse: Codable {
     let symbol: String

@@ -9,14 +9,32 @@ import SwiftUI
 
 @main
 struct BitcoinerApp: App {
+    @State private var showLaunchScreen = true
+    
     init() {
         configureAppearance()
     }
     
     var body: some Scene {
         WindowGroup {
-            MainTabView()
-                .preferredColorScheme(.dark)
+            ZStack {
+                MainTabView()
+                    .preferredColorScheme(.dark)
+                
+                if showLaunchScreen {
+                    LaunchScreenView()
+                        .transition(.opacity)
+                        .zIndex(1)
+                }
+            }
+            .onAppear {
+                // Dismiss launch screen after delay
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    withAnimation(.easeOut(duration: 0.5)) {
+                        showLaunchScreen = false
+                    }
+                }
+            }
         }
     }
     

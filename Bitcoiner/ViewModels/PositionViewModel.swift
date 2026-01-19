@@ -67,7 +67,7 @@ final class PositionViewModel: ObservableObject {
         error = nil
         
         do {
-            positionData = try await binanceService.fetchLongShortRatio()
+            positionData = try await binanceService.fetchLongShortRatio(period: selectedTimeframe.binanceValue)
             lastRefresh = Date()
         } catch {
             self.error = error.localizedDescription
