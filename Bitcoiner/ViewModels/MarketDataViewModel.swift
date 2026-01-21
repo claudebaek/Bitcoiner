@@ -18,20 +18,25 @@ final class MarketDataViewModel: ObservableObject {
     @Published var lastRefresh: Date?
     @Published var miningSettings: MiningSettings = .default
     @Published var isMiningDataReal = false
+    @Published var news: [BitcoinNews] = []
+    @Published var isLoadingNews = false
     
     // MARK: - Private Properties
     private let coinGeckoService: CoinGeckoService
     private let miningService: MiningService
     private let settingsManager: MiningSettingsManager
+    private let newsService: NewsService
     private var refreshTask: Task<Void, Never>?
     
     // MARK: - Initialization
     init(coinGeckoService: CoinGeckoService = .shared,
          miningService: MiningService = .shared,
-         settingsManager: MiningSettingsManager = .shared) {
+         settingsManager: MiningSettingsManager = .shared,
+         newsService: NewsService = .shared) {
         self.coinGeckoService = coinGeckoService
         self.miningService = miningService
         self.settingsManager = settingsManager
+        self.newsService = newsService
         self.miningSettings = settingsManager.settings
     }
     
@@ -55,10 +60,22 @@ final class MarketDataViewModel: ObservableObject {
         await withTaskGroup(of: Void.self) { group in
             group.addTask { await self.fetchBTCPrice() }
             group.addTask { await self.fetchMiningData() }
+            group.addTask { await self.fetchNews() }
         }
         
         isLoading = false
         lastRefresh = Date()
+    }
+    
+    private func fetchNews() async {
+        isLoadingNews = true
+        do {
+            news = try await newsService.fetchNews(limit: 5)
+        } catch {
+            print("News fetch error: \(error.localizedDescription)")
+            // Keep existing news or empty if none
+        }
+        isLoadingNews = false
     }
     
     private func fetchBTCPrice() async {

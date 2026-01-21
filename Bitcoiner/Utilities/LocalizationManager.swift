@@ -476,6 +476,10 @@ enum L10n {
     static var consumerPriceInflation: String { LocalizationManager.shared.localizedString(for: "consumer_price_inflation") }
     static var historical: String { LocalizationManager.shared.localizedString(for: "historical") }
     static var current: String { LocalizationManager.shared.localizedString(for: "current") }
+    
+    // MARK: - News
+    static var bitcoinNews: String { LocalizationManager.shared.localizedString(for: "bitcoin_news") }
+    static var noNewsAvailable: String { LocalizationManager.shared.localizedString(for: "no_news_available") }
 }
 
 // MARK: - String Extension for Localization

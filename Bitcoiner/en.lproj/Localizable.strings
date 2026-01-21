@@ -446,3 +446,7 @@
 "consumer_price_inflation" = "Consumer price inflation (annual %%). Last updated: %@";
 "historical" = "Historical";
 "current" = "Current";
+
+// MARK: - News
+"bitcoin_news" = "Bitcoin News";
+"no_news_available" = "No news available";

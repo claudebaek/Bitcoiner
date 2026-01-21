@@ -446,3 +446,7 @@
 "consumer_price_inflation" = "소비자물가 인플레이션 (연간 %%). 최종 업데이트: %@";
 "historical" = "역사";
 "current" = "현재";
+
+// MARK: - News
+"bitcoin_news" = "비트코인 뉴스";
+"no_news_available" = "뉴스가 없습니다";

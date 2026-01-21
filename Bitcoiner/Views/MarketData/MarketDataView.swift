@@ -25,6 +25,12 @@ struct MarketDataView: View {
                         }
                     )
                     
+                    // Bitcoin News Section
+                    NewsSectionView(
+                        news: viewModel.news,
+                        isLoading: viewModel.isLoadingNews
+                    )
+                    
                     if let error = viewModel.error {
                         errorBanner(error)
                     }
