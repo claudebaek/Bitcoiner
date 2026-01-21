@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct SettingsView: View {
     @ObservedObject private var localizationManager = LocalizationManager.shared
     @AppStorage("autoRefreshEnabled") private var autoRefreshEnabled = true
     @AppStorage("refreshInterval") private var refreshInterval = 30
     @AppStorage("hapticFeedbackEnabled") private var hapticFeedbackEnabled = true
+    @Environment(\.requestReview) private var requestReview
     
     var body: some View {
         NavigationStack {
@@ -120,12 +122,14 @@ struct SettingsView: View {
                 
                 // About Section
                 Section(L10n.about) {
-                    Link(destination: URL(string: "https://github.com")!) {
+                    Button {
+                        requestReview()
+                    } label: {
                         SettingsRow(icon: "star.fill", title: L10n.rateApp, iconColor: AppColors.neutralYellow)
                     }
                     
-                    Link(destination: URL(string: "https://github.com")!) {
-                        SettingsRow(icon: "envelope.fill", title: L10n.sendFeedback, iconColor: AppColors.bitcoinOrange)
+                    Link(destination: URL(string: "https://t.me/lijay100")!) {
+                        SettingsRow(icon: "paperplane.fill", title: L10n.sendFeedback, iconColor: AppColors.bitcoinOrange)
                     }
                     
                     NavigationLink {
