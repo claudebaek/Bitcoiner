@@ -70,3 +70,9 @@ secrets/
 *.mobileprovision
 *.cer
 fastlane/AuthKey*.p8
+
+# Firebase
+GoogleService-Info.plist
+
+# Fastlane Screenshots (auto-generated)
+fastlane/screenshots/
