@@ -790,7 +790,7 @@ struct BitcoinYouTuber: Identifiable {
     static let allYouTubers: [BitcoinYouTuber] = [
         // Korean YouTubers (국내) - Atomic Bitcoin 추천 리스트 (트윗에서 핸들 확인된 채널만)
         BitcoinYouTuber(
-            name: "Atomic Bitcoin",
+            name: "아토믹⚡️비트코인",
             channelUrl: URL(string: "https://www.youtube.com/@atomicBTC")!,
             region: .korean,
             description: "비트코인 온라인 교육, 커뮤니티, BTC 결제 매장 지도",
@@ -804,7 +804,7 @@ struct BitcoinYouTuber: Identifiable {
             focus: ["Philosophy", "Education", "Culture"]
         ),
         BitcoinYouTuber(
-            name: "네딸바 (네덜란드딸바보)",
+            name: "네딸바 NL daughter's daddy",
             channelUrl: URL(string: "https://www.youtube.com/@네딸바")!,
             region: .korean,
             description: "비트코인에 대한 제대로된 이해를 돕는 채널",
@@ -819,7 +819,7 @@ struct BitcoinYouTuber: Identifiable {
         ),
         BitcoinYouTuber(
             name: "리스펙 투자플랜",
-            channelUrl: URL(string: "https://www.youtube.com/@Respect_Invest")!,
+            channelUrl: URL(string: "https://www.youtube.com/channel/UC1f_j9wOASvYAvADpwTXT0Q")!,
             region: .korean,
             description: "장기적 우상향 자산 투자, 경제적 자립과 시공간의 자유",
             focus: ["Investment", "Strategy", "Long-term"]
@@ -832,32 +832,39 @@ struct BitcoinYouTuber: Identifiable {
             focus: ["Interviews", "Ideas"]
         ),
         BitcoinYouTuber(
-            name: "사운드머니",
+            name: "사운드머니TV",
             channelUrl: URL(string: "https://www.youtube.com/@thesoundmoney")!,
             region: .korean,
             description: "건전화폐의 팬으로서 비트코인 맥시멀리즘의 유혹을 받는 채널",
             focus: ["Sound Money", "Savings"]
         ),
         BitcoinYouTuber(
-            name: "BTC 5000K",
+            name: "지분전쟁⚡️상원수",
             channelUrl: URL(string: "https://www.youtube.com/@btc5000k")!,
             region: .korean,
             description: "비트코인 투자 및 분석",
             focus: ["Investment", "Analysis"]
         ),
         BitcoinYouTuber(
-            name: "투자생각",
+            name: "하워드의 투자생각",
             channelUrl: URL(string: "https://www.youtube.com/@invest_think")!,
             region: .korean,
             description: "투자에 대한 생각과 비트코인 분석",
             focus: ["Investment", "Thinking"]
         ),
         BitcoinYouTuber(
-            name: "W선생 투자자",
+            name: "유노나띵옛",
             channelUrl: URL(string: "https://www.youtube.com/@mr.W.Investor")!,
             region: .korean,
             description: "비트코인 투자 전략",
             focus: ["Investment", "Strategy"]
+        ),
+        BitcoinYouTuber(
+            name: "리버스온 ReBirth:ON",
+            channelUrl: URL(string: "https://www.youtube.com/@ReBirth_ON")!,
+            region: .korean,
+            description: "비트코인 교육 및 분석",
+            focus: ["Education", "Analysis"]
         ),
         
         // International YouTubers (해외)
@@ -869,7 +876,7 @@ struct BitcoinYouTuber: Identifiable {
             focus: ["Education", "Analysis"]
         ),
         BitcoinYouTuber(
-            name: "Andreas Antonopoulos",
+            name: "aantonop",
             channelUrl: URL(string: "https://www.youtube.com/@aantonop")!,
             region: .international,
             description: "비트코인 철학, 탈중앙화, 기술적 기반 및 안전성 심층 설명",
@@ -897,8 +904,8 @@ struct BitcoinYouTuber: Identifiable {
             focus: ["Beginners", "Tutorials", "Basics"]
         ),
         BitcoinYouTuber(
-            name: "The Moon (Carl)",
-            channelUrl: URL(string: "https://www.youtube.com/@TheMoonCarl")!,
+            name: "The Moon Show",
+            channelUrl: URL(string: "https://www.youtube.com/@TheMoon")!,
             region: .international,
             description: "비트코인 가격 분석, 트렌드, 매크로 요인 분석",
             focus: ["Price Analysis", "Trends", "Macro"]
