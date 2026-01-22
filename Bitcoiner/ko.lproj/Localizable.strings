@@ -156,6 +156,8 @@
 "premium" = "프리미엄";
 "about" = "앱 정보";
 "rate_app" = "앱 평가하기";
+"write_review" = "리뷰 작성하기";
+"share_app" = "앱 공유하기";
 "send_feedback" = "피드백 보내기";
 "privacy_policy" = "개인정보 처리방침";
 "terms_of_service" = "이용약관";
@@ -450,3 +452,14 @@
 // MARK: - News
 "bitcoin_news" = "비트코인 뉴스";
 "no_news_available" = "뉴스가 없습니다";
+"latest_news_subtitle" = "최신 비트코인 뉴스 및 업데이트";
+
+// MARK: - Market Tabs
+"mining_tab" = "채굴";
+"news_tab" = "뉴스";
+
+// MARK: - Support Developer
+"support_developer" = "개발자 응원하기";
+"watch_ad_support" = "광고보고 개발자에게 사탕사주기";
+"thank_you_support" = "감사합니다!";
+"thank_you_message" = "여러분의 응원이 큰 힘이 됩니다!";

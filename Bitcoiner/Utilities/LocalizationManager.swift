@@ -216,6 +216,8 @@ enum L10n {
     static var premium: String { LocalizationManager.shared.localizedString(for: "premium") }
     static var about: String { LocalizationManager.shared.localizedString(for: "about") }
     static var rateApp: String { LocalizationManager.shared.localizedString(for: "rate_app") }
+    static var writeReview: String { LocalizationManager.shared.localizedString(for: "write_review") }
+    static var shareApp: String { LocalizationManager.shared.localizedString(for: "share_app") }
     static var sendFeedback: String { LocalizationManager.shared.localizedString(for: "send_feedback") }
     static var privacyPolicy: String { LocalizationManager.shared.localizedString(for: "privacy_policy") }
     static var termsOfService: String { LocalizationManager.shared.localizedString(for: "terms_of_service") }
@@ -480,6 +482,17 @@ enum L10n {
     // MARK: - News
     static var bitcoinNews: String { LocalizationManager.shared.localizedString(for: "bitcoin_news") }
     static var noNewsAvailable: String { LocalizationManager.shared.localizedString(for: "no_news_available") }
+    static var latestNewsSubtitle: String { LocalizationManager.shared.localizedString(for: "latest_news_subtitle") }
+    
+    // MARK: - Market Tabs
+    static var miningTab: String { LocalizationManager.shared.localizedString(for: "mining_tab") }
+    static var newsTab: String { LocalizationManager.shared.localizedString(for: "news_tab") }
+    
+    // MARK: - Support Developer
+    static var supportDeveloper: String { LocalizationManager.shared.localizedString(for: "support_developer") }
+    static var watchAdSupport: String { LocalizationManager.shared.localizedString(for: "watch_ad_support") }
+    static var thankYouSupport: String { LocalizationManager.shared.localizedString(for: "thank_you_support") }
+    static var thankYouMessage: String { LocalizationManager.shared.localizedString(for: "thank_you_message") }
 }
 
 // MARK: - String Extension for Localization

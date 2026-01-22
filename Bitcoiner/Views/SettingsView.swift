@@ -10,6 +10,7 @@ import StoreKit
 
 struct SettingsView: View {
     @ObservedObject private var localizationManager = LocalizationManager.shared
+    @ObservedObject private var adManager = InterstitialAdManager.shared
     @AppStorage("autoRefreshEnabled") private var autoRefreshEnabled = true
     @AppStorage("refreshInterval") private var refreshInterval = 30
     @AppStorage("hapticFeedbackEnabled") private var hapticFeedbackEnabled = true
@@ -34,7 +35,7 @@ struct SettingsView: View {
                                 .font(.system(size: 12))
                                 .foregroundColor(AppColors.secondaryText)
                             
-                            Text("\(L10n.version) 1.0.0")
+                            Text("\(L10n.version) 1.1.0")
                                 .font(.system(size: 11))
                                 .foregroundColor(AppColors.tertiaryText)
                         }
@@ -120,12 +121,44 @@ struct SettingsView: View {
                 }
                 .listRowBackground(AppColors.cardBackground)
                 
+                // Support Section
+                Section(L10n.supportDeveloper) {
+                    Button {
+                        adManager.showAd()
+                    } label: {
+                        HStack {
+                            SettingsRow(icon: "gift.fill", title: L10n.watchAdSupport, iconColor: .pink)
+                            
+                            Spacer()
+                            
+                            if adManager.isLoading {
+                                ProgressView()
+                                    .scaleEffect(0.8)
+                            } else if adManager.isAdLoaded {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .foregroundColor(AppColors.profitGreen)
+                                    .font(.system(size: 16))
+                            }
+                        }
+                    }
+                    .disabled(!adManager.isAdLoaded && !adManager.isLoading)
+                }
+                .listRowBackground(AppColors.cardBackground)
+                
                 // About Section
                 Section(L10n.about) {
                     Button {
                         requestReview()
                     } label: {
                         SettingsRow(icon: "star.fill", title: L10n.rateApp, iconColor: AppColors.neutralYellow)
+                    }
+                    
+                    Link(destination: URL(string: "https://apps.apple.com/app/id6758008276?action=write-review")!) {
+                        SettingsRow(icon: "pencil.and.outline", title: L10n.writeReview, iconColor: AppColors.profitGreen)
+                    }
+                    
+                    ShareLink(item: URL(string: "https://apps.apple.com/app/id6758008276")!) {
+                        SettingsRow(icon: "square.and.arrow.up", title: L10n.shareApp, iconColor: .blue)
                     }
                     
                     Link(destination: URL(string: "https://t.me/lijay100")!) {
@@ -161,7 +194,42 @@ struct SettingsView: View {
             .onAppear {
                 AnalyticsManager.shared.logEvent(.settingsViewed)
             }
+            .overlay {
+                if adManager.showThankYou {
+                    ThankYouOverlay()
+                        .transition(.opacity.combined(with: .scale))
+                }
+            }
+            .animation(.easeInOut(duration: 0.3), value: adManager.showThankYou)
         }
+    }
+}
+
+// MARK: - Thank You Overlay
+struct ThankYouOverlay: View {
+    var body: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "heart.fill")
+                .font(.system(size: 48))
+                .foregroundColor(.pink)
+            
+            Text(L10n.thankYouSupport)
+                .font(.system(size: 20, weight: .bold))
+                .foregroundColor(AppColors.primaryText)
+                .multilineTextAlignment(.center)
+            
+            Text(L10n.thankYouMessage)
+                .font(.system(size: 14))
+                .foregroundColor(AppColors.secondaryText)
+                .multilineTextAlignment(.center)
+        }
+        .padding(32)
+        .background(
+            RoundedRectangle(cornerRadius: 20)
+                .fill(AppColors.cardBackground)
+                .shadow(color: .black.opacity(0.3), radius: 20)
+        )
+        .padding(40)
     }
 }
 

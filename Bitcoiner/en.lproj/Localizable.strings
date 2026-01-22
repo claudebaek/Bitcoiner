@@ -156,6 +156,8 @@
 "premium" = "Premium";
 "about" = "About";
 "rate_app" = "Rate App";
+"write_review" = "Write a Review";
+"share_app" = "Share App";
 "send_feedback" = "Send Feedback";
 "privacy_policy" = "Privacy Policy";
 "terms_of_service" = "Terms of Service";
@@ -450,3 +452,14 @@
 // MARK: - News
 "bitcoin_news" = "Bitcoin News";
 "no_news_available" = "No news available";
+"latest_news_subtitle" = "Latest Bitcoin news and updates";
+
+// MARK: - Market Tabs
+"mining_tab" = "Mining";
+"news_tab" = "News";
+
+// MARK: - Support Developer
+"support_developer" = "Support Developer";
+"watch_ad_support" = "Watch Ad & Buy Developer Candy";
+"thank_you_support" = "Thank You!";
+"thank_you_message" = "Your support means a lot to me!";
